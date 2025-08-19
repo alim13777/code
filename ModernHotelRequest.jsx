@@ -54,7 +54,7 @@ import {useDispatch} from 'react-redux'
 import {Slide as ImageSlide} from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 import hotelPlaceholder from './../../../../../images/hotel.jpg'
-import StyledDialog from "../../../components/StyledDialog"
+import StyledDialog from "./components/StyledDialog"
 import Autocomplete from "@material-ui/lab/Autocomplete"
 import DatePicker from "../../../components/DatePicker"
 import {makeStyles, withStyles} from "@material-ui/core/styles"
