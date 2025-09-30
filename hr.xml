@@ -1,0 +1,39 @@
+<resource name="hr">
+    <resource name="holiday">
+        <method type="get" groups="ADMIN">
+            <service name="hr.holiday.search#holiday"/>
+        </method>
+        <method type="post" groups="ADMIN">
+            <service name="hr.holiday.create#holiday"/>
+        </method>
+        <id name="holidayId" >
+            <method type="put" groups="ADMIN">
+                <service name="hr.holiday.update#holiday"/>
+            </method>
+            <method type="delete" groups="ADMIN">
+                <service name="hr.holiday.delete#holiday"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="emplUnits">
+        <method type="post">
+            <service name="hr.employee.create#emplUnit"/>
+        </method>
+        <id name="emplUnitId">
+            <method type="delete">
+                <service name="hr.employee.delete#emplUnit"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="subEmployee">
+        <method type="get">
+            <service name="hr.employee.get#subEmployee"/>
+        </method>
+    </resource>
+    <resource name="unitEmployee">
+        <method type="get">
+            <service name="hr.employee.get#unitEmployee"/>
+        </method>
+    </resource>
+
+</resource>

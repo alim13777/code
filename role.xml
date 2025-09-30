@@ -1,0 +1,16 @@
+<resource name="roles">
+    <method type="get" groups="ADMIN">
+        <service name="hr.role.search#role"/>
+    </method>
+    <id name="roleTypeId">
+        <method type="delete" groups="ADMIN">
+            <service name="hr.role.delete#role"/>
+        </method>
+        <method type="put" groups="ADMIN">
+            <service name="hr.role.edit#role"/>
+        </method>
+    </id>
+    <method type="post" groups="ADMIN">
+        <service name="hr.role.create#role"/>
+    </method>
+</resource>

@@ -1,0 +1,144 @@
+<resource name="customer">
+
+    <method type="get" groups="ADMIN">
+        <service name="customer.customer.search#customer"/>
+    </method>
+    <resource name="plans">
+        <method type="get">
+            <service name="customer.plan.search#plan"/>
+        </method>
+        <method type="post" groups="ADMIN">
+            <service name="customer.plan.create#plan"/>
+        </method>
+        <id name="planId">
+            <method type="put" groups="ADMIN">
+                <service name="customer.plan.edit#plan"/>
+            </method>
+            <method type="delete" groups="ADMIN">
+                <service name="customer.plan.delete#plan"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="planList">
+        <method type="get" groups="ADMIN">
+            <service name="customer.plan.search#plan"/>
+        </method>
+    </resource>
+    <resource name="tickets">
+        <method type="get">
+            <service name="customer.ticket.search#tickets"/>
+        </method>
+        <method type="post">
+            <service name="customer.ticket.create#ticket"/>
+        </method>
+        <id name="ticketId">
+            <method type="put">
+                <service name="customer.ticket.edit#ticket"/>
+            </method>
+            <method type="delete">
+                <service name="customer.ticket.delete#ticket"/>
+            </method>
+            <resource name="answers">
+                <method type="get">
+                    <service name="customer.ticket.get#ticketAns"/>
+                </method>
+                <method type="post">
+                    <service name="customer.ticket.create#ticketAns"/>
+                </method>
+            </resource>
+        </id>
+    </resource>
+    <resource name="ticketList">
+        <method type="get" groups="ADMIN">
+            <service name="customer.ticket.search#tickets"/>
+        </method>
+    </resource>
+    <resource name="orgTickets">
+        <method type="get">
+            <service name="customer.ticket.get#orgTickets"/>
+        </method>
+    </resource>
+    <resource name="customerPage">
+        <method type="get" groups="ADMIN">
+            <service name="customer.page.get#customerPage"/>
+        </method>
+    </resource>
+    <resource name="ticketPage">
+        <method type="get">
+            <service name="customer.page.get#ticketPage"/>
+        </method>
+    </resource>
+    <resource name="createPage">
+        <method type="get">
+            <service name="customer.page.get#createPage"/>
+        </method>
+    </resource>
+    <resource name="planPage">
+        <method type="get">
+            <service name="customer.page.get#planPage"/>
+        </method>
+    </resource>
+    <resource name="invoice">
+        <method type="post">
+            <service name="customer.invoice.create#invoice"/>
+        </method>
+    </resource>
+    <resource name="planListPage">
+        <method type="get">
+            <service name="customer.page.get#planListPage"/>
+        </method>
+    </resource>
+    <resource name="customerPlans">
+        <method type="get">
+            <service name="customer.customer.get#plan"/>
+        </method>
+    </resource>
+    <resource name="checkPlan">
+        <method type="post">
+            <service name="customer.customer.check#plan"/>
+        </method>
+    </resource>
+    <resource name="smsPlan">
+        <method type="get">
+            <service name="customer.customer.send#sms"/>
+        </method>
+    </resource>
+    <resource name="discounts">
+        <method type="get" groups="ADMIN">
+            <service name="customer.discount.search#discount"/>
+        </method>
+        <method type="post" groups="ADMIN">
+            <service name="customer.discount.create#discount"/>
+        </method>
+        <id name="discountId">
+            <method type="delete" groups="ADMIN">
+                <service name="customer.discount.delete#discount"/>
+            </method>
+            <method type="put" groups="ADMIN">
+                <service name="customer.discount.update#discount"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="wizardPlans">
+        <method type="get">
+            <service name="customer.plan.search#plan_v2"/>
+        </method>
+
+    </resource>
+    <resource name="wizardInvoice">
+        <method type="post">
+            <service name="customer.invoice.create#invoice_v2"/>
+        </method>
+
+    </resource>
+    <resource name="discount">
+        <method type="get">
+            <service name="customer.customer.check#discount"/>
+        </method>
+    </resource>
+    <resource name="pay" require-authentication="false">
+        <method type="get" >
+            <service name="customer.customer.buy#plan"/>
+        </method>
+    </resource>
+</resource>

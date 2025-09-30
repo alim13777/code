@@ -1,0 +1,66 @@
+<resource name="units">
+    <method type="get">
+        <service name="organization.unit.search#unit"/>
+    </method>
+    <method type="post">
+        <service name="organization.unit.create#unit"/>
+    </method>
+    <id name="unitId">
+        <method type="put">
+            <service name="organization.unit.edit#unit"/>
+        </method>
+        <method type="delete">
+            <service name="organization.unit.delete#unit"/>
+        </method>
+        <resource name="shifts">
+            <method type="post">
+                <service name="organization.shift.create#shift"/>
+            </method>
+            <method type="get">
+                <service name="organization.shift.get#unitShift"/>
+            </method>
+        </resource>
+        <resource name="role">
+            <method type="get">
+                <service name="organization.unit.get#manager"/>
+            </method>
+        </resource>
+        <resource name="employees">
+            <method type="get">
+                <service name="organization.unit.get#employee"/>
+            </method>
+        </resource>
+    </id>
+    <resource name="create">
+        <method type="get">
+            <service name="organization.page.get#createUnit"/>
+        </method>
+    </resource>
+    <resource name="createWizard">
+        <method type="get">
+            <service name="organization.page.get#createUnit_v2"/>
+        </method>
+    </resource>
+    <resource name="wizard">
+        <method type="get">
+            <service name="organization.unit.search#unit_v2"/>
+        </method>
+        <method type="post">
+            <service name="organization.unit.create#unit_v2"/>
+        </method>
+        <id name="unitId">
+            <method type="put">
+                <service name="organization.unit.edit#unit_v2"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="shiftWizard">
+        <method type="get">
+            <service name="organization.shift.get#unitShift_v2"/>
+        </method>
+        <method type="post">
+            <service name="organization.shift.create#shift_v2"/>
+        </method>
+    </resource>
+
+</resource>

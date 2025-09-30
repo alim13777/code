@@ -1,0 +1,70 @@
+<resource name="employees">
+    <method type="post">
+        <service name="hr.employee.create#employee"/>
+    </method>
+    <method type="get">
+        <service name="hr.employee.search#employee"/>
+    </method>
+    <resource name="createPage">
+            <method type="get">
+                <service name="hr.page.get#createPage"/>
+            </method>
+    </resource>
+    <id name="employeeId">
+        <resource name="disable">
+        <method type="put">
+            <service name="hr.employee.disable#employee"/>
+        </method>
+        </resource>
+        <method type="put">
+            <service name="hr.employee.update#employee"/>
+        </method>
+        <method type="delete">
+            <service name="hr.employee.delete#employee"/>
+        </method>
+        <resource name="wizard">
+            <method type="put">
+                <service name="hr.employee.update#employee_v2"/>
+            </method>
+        </resource>
+        <resource name="managers">
+            <method type="get">
+                <service name="hr.employee.get#manager_v2"/>
+            </method>
+        </resource>
+        <resource name="manager">
+            <method type="get">
+                <service name="hr.employee.get#manager"/>
+            </method>
+        </resource>
+    </id>
+    <resource name="users">
+        <id name="username">
+            <method type="get">
+                <service name="hr.employee.get#userEmployee"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="createPageWizard">
+        <method type="get">
+            <service name="hr.page.get#createPage_v2"/>
+        </method>
+    </resource>
+    <resource name="wizard">
+        <method type="get">
+            <service name="hr.employee.search#employee_v2"/>
+        </method>
+
+        <method type="post">
+            <service name="hr.employee.create#employee_v2"/>
+        </method>
+    </resource>
+    <resource name="image">
+        <method type="post">
+            <service name="hr.employee.create#profileFile"/>
+        </method>
+        <method type="get">
+            <service name="hr.employee.get#profileFile"/>
+        </method>
+    </resource>
+</resource>

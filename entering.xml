@@ -1,0 +1,285 @@
+<resource name="entering">
+    <method type="get">
+        <service name="entering.entering.get#request"/>
+    </method>
+    <method type="post">
+        <service name="entering.entering.create#request"/>
+    </method>
+    <id name="requestId">
+        <method type="put">
+            <service name="entering.entering.update#request"/>
+        </method>
+    </id>
+    <resource name="vacations">
+        <method type="post">
+            <service name="entering.request.create#vacation"/>
+        </method>
+        <id name="vacationId">
+            <method type="put">
+                <service name="entering.request.update#vacation"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="corrections">
+        <method type="post">
+            <service name="entering.request.create#enteringCorrection"/>
+        </method>
+        <id name="enteringId">
+            <method type="put">
+                <service name="entering.request.update#enteringCorrection"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="hourly">
+        <method type="post">
+            <service name="entering.request.create#hourly"/>
+        </method>
+        <id name="hourlyId">
+            <method type="put">
+                <service name="entering.request.update#hourly"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="mission">
+        <method type="post">
+            <service name="entering.request.create#mission"/>
+        </method>
+        <id name="missionId">
+            <method type="put">
+                <service name="entering.request.update#mission"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="vacationPage">
+        <method type="get">
+            <service name="entering.page.get#vacation"/>
+        </method>
+    </resource>
+    <resource name="missionPage">
+        <method type="get">
+            <service name="entering.page.get#mission"/>
+        </method>
+    </resource>
+    <resource name="requestPage">
+        <method type="get">
+            <service name="entering.page.get#request"/>
+        </method>
+    </resource>
+    <resource name="locationPage">
+        <method type="get">
+            <service name="entering.page.get#location"/>
+        </method>
+    </resource>
+    <resource name="enteringLocationPage">
+        <method type="get">
+            <service name="entering.page.get#enteringLocation"/>
+        </method>
+    </resource>
+    <resource name="userLocationPage">
+        <method type="get">
+            <service name="entering.page.get#userLocation"/>
+        </method>
+    </resource>
+    <resource name="enCorrection">
+        <method type="post">
+            <service name="entering.request.register#entering"/>
+        </method>
+    </resource>
+    <resource name="hour">
+        <method type="post">
+            <service name="entering.request.register#hourly"/>
+        </method>
+    </resource>
+    <resource name="daily">
+        <method type="post">
+            <service name="entering.request.register#daily"/>
+        </method>
+    </resource>
+    <resource name="requestLimit">
+        <method type="get">
+            <service name="entering.entering.get#requestLimit"/>
+        </method>
+        <method type="post">
+            <service name="entering.entering.create#requestLimit"/>
+        </method>
+        <method type="put">
+            <service name="entering.entering.update#requestLimit"/>
+        </method>
+        <method type="delete">
+            <service name="entering.entering.delete#requestLimit"/>
+        </method>
+
+    </resource>
+    <resource name="requestLimitPage">
+        <method type="get">
+            <service name="entering.page.get#requestLimitPage"/>
+        </method>
+    </resource>
+    <resource name="reportConfig">
+        <method type="get">
+            <service name="entering.entering.get#reportConfig"/>
+        </method>
+        <method type="post">
+            <service name="hr.reportConfig.create"/>
+        </method>
+    </resource>
+    <resource name="enteringLimit">
+        <method type="get">
+            <service name="entering.entering.get#enteringLimit"/>
+        </method>
+        <method type="post">
+            <service name="entering.entering.create#enteringLimit"/>
+        </method>
+        <id name="limitId">
+            <method type="put">
+                <service name="entering.entering.edit#enteringLimit"/>
+            </method>
+            <method type="delete">
+                <service name="entering.entering.delete#enteringLimit"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="request">
+        <method type="get">
+            <service name="entering.entering.search#request"/>
+        </method>
+    </resource>
+    <resource name="employeeRequest">
+        <method type="get">
+            <service name="entering.entering.search#employeeRequest"/>
+        </method>
+    </resource>
+    <resource name="attendance">
+        <id name="mobile">
+            <method type="get">
+                <service name="entering.entering.get#attendance"/>
+            </method>
+        </id>
+
+    </resource>
+    <resource name="dailyAttendance">
+        <method type="post">
+            <service name="entering.entering.get#dailyAttendance"/>
+        </method>
+    </resource>
+    <resource name="karkard">
+        <method type="post">
+            <service name="entering.entering.get#karkard"/>
+        </method>
+        <method type="get">
+            <service name="entering.karkard.get#karkard"/>
+        </method>
+
+    </resource>
+    <resource name="userAttendance">
+        <method type="get">
+            <service name="entering.entering.get#userAttendance"/>
+        </method>
+    </resource>
+    <resource name="userLocation">
+        <method type="get">
+            <service name="entering.location.get#userLocation"/>
+        </method>
+        <method type="post">
+            <service name="entering.location.create#userLocation"/>
+        </method>
+        <id name="userLocationId">
+            <method type="delete">
+                <service name="entering.location.delete#userLocation"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="userLocations">
+        <id name="username">
+            <method type="get">
+                <service name="entering.location.get#userLocations"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="enteringLocation">
+        <method type="get">
+            <service name="entering.location.get#enteringLocation"/>
+        </method>
+        <method type="post">
+            <service name="entering.location.create#enteringLocation"/>
+        </method>
+        <id name="enteringLocationId">
+            <method type="put">
+                <service name="entering.location.update#enteringLocation"/>
+            </method>
+            <method type="delete">
+                <service name="entering.location.delete#enteringLocation"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="karnameh">
+        <method type="get">
+            <service name="entering.karkard.get#karnameh"/>
+        </method>
+    </resource>
+    <resource name="dailyKarkard">
+        <method type="get">
+            <service name="entering.karkard.get#dailyKarkard"/>
+        </method>
+    </resource>
+    <resource name="karnamehList">
+        <method type="get">
+            <service name="entering.karkard.get#karnamehList"/>
+        </method>
+    </resource>
+    <resource name="access">
+        <method type="post">
+            <service name="entering.entering.create#enteringAccess"/>
+        </method>
+        <method type="get">
+            <service name="entering.entering.get#enteringAccess"/>
+        </method>
+        <id name="userCode">
+            <method type="delete">
+                <service name="entering.entering.delete#enteringAccess"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="confirm">
+        <resource name="search">
+            <method type="get">
+                <service name="entering.entering.search#confirm"/>
+            </method>
+        </resource>
+        <method type="get">
+            <service name="entering.entering.get#confirm"/>
+        </method>
+        <method type="post">
+            <service name="entering.entering.create#confirm"/>
+        </method>
+        <id name="confirmId">
+            <method type="delete">
+                <service name="entering.entering.delete#confirm"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="locationWizard">
+        <method type="get">
+            <service name="entering.location.get#enteringLocation_v2"/>
+        </method>
+        <method type="post">
+            <service name="entering.location.create#enteringLocation_v2"/>
+        </method>
+    </resource>
+    <resource name="locationPageWizard">
+        <method type="get">
+            <service name="entering.page.get#enteringLocation_v2"/>
+        </method>
+    </resource>
+    <resource name="locations">
+        <method type="get">
+            <service name="entering.karkard.get#location"/>
+        </method>
+    </resource>
+    <resource name="search">
+        <method type="get">
+            <service name="entering.entering.search#entering"/>
+        </method>
+    </resource>
+</resource>
+

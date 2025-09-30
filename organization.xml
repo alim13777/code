@@ -1,0 +1,71 @@
+<resource name="organizations">
+    <method type="post" groups="ADMIN">
+        <service name="organization.organization.create#organization"/>
+    </method>
+    <method type="get">
+        <service name="organization.organization.search#organization"/>
+    </method>
+
+    <id name="orgId">
+        <method type="delete" groups="ADMIN">
+            <service name="organization.organization.delete#organization"/>
+        </method>
+        <method type="put">
+            <service name="organization.organization.edit#organization"/>
+        </method>
+        <resource name="disable">
+            <method type="put">
+                <service name="organization.organization.disable#organization"/>
+            </method>
+        </resource>
+        <resource name="admin" >
+            <method type="post" groups="ADMIN">
+                <service name="organization.organization.create#admin"/>
+            </method>
+            <method type="delete" groups="ADMIN">
+                <service name="organization.organization.delete#admin"/>
+            </method>
+        </resource>
+        <resource name="employees">
+            <method type="get">
+                <service name="organization.organization.get#employee"/>
+            </method>
+        </resource>
+        <method type="patch">
+            <service name="organization.organization.patch#organization"/>
+        </method>
+    </id>
+    <resource name="disable">
+        <method type="get">
+            <service name="organization.organization.disable#plan"/>
+        </method>
+    </resource>
+    <resource name="wizard">
+        <method type="get">
+            <service name="organization.organization.get#organization"/>
+        </method>
+        <method type="post">
+            <service name="organization.organization.create#organization_v2"/>
+        </method>
+    </resource>
+    <resource name="shifts">
+        <method type="get">
+            <service name="organization.shift.search#shift"/>
+        </method>
+    </resource>
+    <resource name="shiftPage">
+        <method type="get">
+            <service name="organization.page.get#shiftPage"/>
+        </method>
+    </resource>
+    <resource name="createPage">
+        <method type="get">
+            <service name="organization.page.get#createPage"/>
+        </method>
+    </resource>
+    <resource name="list">
+        <method type="get" groups="ADMIN">
+            <service name="organization.organization.search#organization"/>
+        </method>
+    </resource>
+</resource>

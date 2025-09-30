@@ -1,0 +1,153 @@
+<resource name="general">
+
+    <resource name="dataValue">
+        <method type="get">
+            <service name="general.general.get#dataValue"/>
+        </method>
+    </resource>
+    <resource name="location">
+        <method type="get">
+            <service name="general.general.get#location"/>
+        </method>
+
+    </resource>
+    <resource name="message">
+        <method type="post">
+            <service name="general.general.create#message"/>
+        </method>
+    </resource>
+    <resource name="request">
+        <method type="post">
+            <service name="general.request.create#request"/>
+        </method>
+        <method type="put">
+            <service name="general.request.update#request"/>
+        </method>
+    </resource>
+    <resource name="date">
+        <resource name="convert">
+        <method type="get">
+            <service name="general.date.convert#date"/>
+        </method>
+            <resource name="list">
+                <method type="get">
+                    <service name="general.date.convert#dateList"/>
+                </method>
+            </resource>
+        </resource>
+
+    </resource>
+    <resource name="file">
+        <method type="get" require-authentication="false">
+            <service name="general.file.get#file"/>
+        </method>
+        <resource name="info">
+        <method type="get">
+            <service name="general.file.get#fileInfo"/>
+        </method>
+        </resource>
+        <resource name="url">
+        <method type="post">
+            <service name="general.file.get#file"/>
+        </method>
+        </resource>
+        <method type="post">
+            <service name="general.file.create#file"/>
+        </method>
+        <resource name="api">
+            <method type="post">
+                <service name="general.file.create#apiFile"/>
+            </method>
+        </resource>
+        <resource name="base64" >
+            <method type="post">
+                <service name="general.file.create#base64File"/>
+            </method>
+        </resource>
+    </resource>
+    <resource name="download" require-authentication="false">
+        <method type="get">
+            <service name="general.file.download#file"/>
+        </method>
+    </resource>
+    <resource name="open" require-authentication="false">
+        <method type="get">
+            <service name="general.file.open#file"/>
+        </method>
+    </resource>
+    <resource name="login">
+        <method type="get">
+            <service name="general.general.create#login"/>
+        </method>
+    </resource>
+    <resource name="menu">
+        <method type="post">
+            <service name="general.general.get#menu"/>
+        </method>
+    </resource>
+    <resource name="logout">
+        <method type="get">
+            <service name="general.general.create#logout"/>
+        </method>
+    </resource>
+    <resource name="excel">
+        <method type="post">
+            <service name="general.general.export#excel"/>
+        </method>
+        <resource name="read">
+        <method type="post">
+            <service name="general.general.read#excel"/>
+        </method>
+
+        </resource>
+    </resource>
+    <resource name="webView" require-authentication="false">
+        <method type="get">
+            <service name="general.general.login#webView"/>
+        </method>
+    </resource>
+    <resource name="enumPage">
+        <method type="get" groups="ADMIN">
+            <service name="general.page.get#enumPage"/>
+        </method>
+    </resource>
+    <resource name="enums">
+        <method type="get">
+            <service name="general.general.get#enum"/>
+        </method>
+        <method type="post" groups="ADMIN">
+            <service name="general.general.create#enum"/>
+        </method>
+        <id name="enumId">
+            <method type="put" groups="ADMIN">
+                <service name="general.general.update#enum"/>
+            </method>
+            <method type="delete" groups="ADMIN">
+                <service name="general.general.delete#enum"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="step">
+        <method type="get">
+            <service name="general.general.get#step"/>
+        </method>
+        <method type="post">
+            <service name="general.general.create#step"/>
+        </method>
+    </resource>
+    <resource name="cache">
+        <method type="post" >
+            <service name="general.general.clear#cache"/>
+        </method>
+    </resource>
+    <resource name="enumsList">
+        <method type="get" groups="ADMIN">
+            <service name="general.general.get#enum"/>
+        </method>
+    </resource>
+    <resource name="health"  require-authentication="false">
+        <method type="get">
+            <service name="general.general.check#health"/>
+        </method>
+    </resource>
+</resource>

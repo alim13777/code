@@ -1,0 +1,24 @@
+<resource name="apps">
+
+    <id name="loginId">
+        <method type="delete">
+            <service name="general.apps.delete#loginApps"/>
+        </method>
+        <method type="put">
+            <service name="general.apps.update#loginApps"/>
+        </method>
+    </id>
+    <resource name="employees">
+        <id name="employeeId">
+        <method type="get">
+            <service name="general.apps.get#loginApps"/>
+        </method>
+        </id>
+    </resource>
+    <resource name="setting">
+        <method type="get">
+            <service name="general.apps.get#setting"/>
+        </method>
+    </resource>
+
+</resource>

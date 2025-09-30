@@ -1,0 +1,39 @@
+<resource name="messages">
+    <resource name="notifications">
+    <method type="post">
+        <service name="message.notification.send#notification"/>
+    </method>
+    </resource>
+    <method type="get">
+        <service name="message.notification.get#notification"/>
+    </method>
+    <id name="notificationId">
+        <resource name="users">
+            <method type="get">
+                <service name="message.notification.get#notificationUsers"/>
+            </method>
+        </resource>
+    </id>
+    <resource name="excel">
+        <method type="post">
+            <service name="message.notification.receive#notificationExcel"/>
+        </method>
+        <id name="fileId">
+            <method type="post">
+                <service name="message.notification.receive#notificationExcel"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="notificationPage">
+        <method type="get">
+            <service name="message.page.get#notification"/>
+        </method>
+    </resource>
+    <resource name="excelFile">
+        <method type="post">
+            <service name="message.notification.read#excel"/>
+        </method>
+    </resource>
+
+
+</resource>

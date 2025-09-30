@@ -1,0 +1,32 @@
+<resource name="process" >
+    <resource name="task">
+        <method type="get">
+            <service name="process.task.get#task"/>
+        </method>
+        <resource name="variable">
+            <method type="get">
+                <service name="process.task.get#variables"/>
+            </method>
+        </resource>
+        <resource name="complete">
+            <method type="post">
+                <service name="process.task.complete#task"/>
+            </method>
+        </resource>
+    </resource>
+    <resource name="start">
+        <method type="post">
+            <service name="process.process.start#process"/>
+        </method>
+    </resource>
+    <resource name="edit">
+        <method type="post">
+            <service name="process.process.trigger#message"/>
+        </method>
+    </resource>
+    <resource name="request">
+        <method type="get">
+            <service name="process.process.get#request"/>
+        </method>
+    </resource>
+</resource>

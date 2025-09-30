@@ -1,0 +1,110 @@
+<resource name="security">
+    <resource name="menuPage">
+        <method type="get" groups="ADMIN">
+            <service name="security.page.get#menu"/>
+        </method>
+    </resource>
+    <resource name="userGroups">
+        <method type="get" groups="ADMIN">
+            <service name="security.userGroup.get#userGroup"/>
+        </method>
+        <id name="userGroupId">
+            <method type="delete" groups="ADMIN">
+                <service name="security.userGroup.delete#userGroup"/>
+            </method>
+            <method type="put" groups="ADMIN">
+                <service name="security.userGroup.edit#userGroup"/>
+            </method>
+        </id>
+        <method type="post" groups="ADMIN">
+            <service name="security.userGroup.create#userGroup"/>
+        </method>
+    </resource>
+    <resource name="profilePage">
+        <method type="get">
+            <service name="security.page.get#profile"/>
+        </method>
+    </resource>
+    <resource name="menuUserGroup">
+        <method type="get" groups="ADMIN">
+            <service name="security.menu.search#menuUserGroup"/>
+        </method>
+        <method type="post" groups="ADMIN">
+            <service name="security.menu.create#menuUserGroup"/>
+        </method>
+        <id name="menuGroupId">
+            <method type="delete" groups="ADMIN">
+                <service name="security.menu.delete#menuUserGroup"/>
+            </method>
+        </id>
+    </resource>
+    <resource name="users">
+        <method type="get" groups="ADMIN">
+            <service name="security.user.search#user"/>
+        </method>
+        <id name="username">
+            <method type="get">
+                <service name="security.user.get#user"/>
+            </method>
+            <resource name="groups">
+                <method type="get" groups="ADMIN">
+                    <service name="security.user.get#groups"/>
+                </method>
+                <method type="post" groups="ADMIN">
+                    <service name="security.user.create#groups"/>
+                </method>
+                <method type="delete" groups="ADMIN">
+                    <service name="security.user.delete#groups"/>
+                </method>
+            </resource>
+        </id>
+    </resource>
+    <resource name="checkLogin">
+        <method type="get">
+            <service name="security.user.check#login"/>
+        </method>
+    </resource>
+    <resource name="expireUsers">
+        <method type="get">
+            <service name="security.user.get#expireUsers"/>
+        </method>
+        <method type="delete">
+            <service name="security.user.expire#app"/>
+        </method>
+    </resource>
+    <resource name="signUp" require-authentication="false">
+        <method type="get">
+            <service name="security.user.signUp#user"/>
+        </method>
+    </resource>
+    <resource name="validateOtp" require-authentication="false">
+        <method type="post">
+            <service name="security.user.validate#otp"/>
+        </method>
+    </resource>
+    <resource name="sendOtp" require-authentication="false">
+        <method type="post">
+            <service name="security.user.send#otp"/>
+        </method>
+    </resource>
+    <resource name="checkUser">
+        <method type="post">
+            <service name="security.user.check#user"/>
+        </method>
+    </resource>
+    <resource name="password">
+        <method type="put">
+            <service name="security.user.update#password"/>
+        </method>
+    </resource>
+    <resource name="login" require-authentication="anonymous-all">
+        <method type="post">
+            <service name="security.user.login#user"/>
+        </method>
+    </resource>
+    <resource name="changePassword">
+        <method type="get">
+            <service name="security.user.change#password"/>
+        </method>
+    </resource>
+</resource>
