@@ -1,0 +1,30 @@
+<services>
+
+    <service verb="create" type="script" location="component://core/service/hr/hr.groovy" method="create_report_config">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <auto-parameters entity-name="ReportConfig"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="configId"/>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="update" type="script" location="component://core/service/hr/hr.groovy" method="update_report_config">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <auto-parameters entity-name="ReportConfig"/>
+        </in-parameters>
+    </service>
+    <service verb="get"    type="script" location="component://core/service/hr/hr.groovy" method="get_report_config">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="config"/>
+        </out-parameters>
+    </service>
+
+</services>

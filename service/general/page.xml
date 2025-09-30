@@ -1,0 +1,16 @@
+<services>
+
+    <service verb="get"  noun="customerPage" type="script"  location="component://core/service/general/general.groovy" method="get_customer_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="planList"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="enumPage"     type="script"  location="component://core/service/general/general.groovy" method="get_enum_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="enumTypes"/>
+        </out-parameters>
+    </service>
+
+</services>

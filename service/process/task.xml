@@ -1,0 +1,74 @@
+<services>
+
+    <service verb="get"       noun="task" type="script" location="component://core/service/process/process.groovy" method="get_task">
+        <in-parameters>
+            <parameter name="filterId"/>
+            <parameter name="assignee"/>
+            <parameter name="firstResult"/>
+            <parameter name="maxResults"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="task"/>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="get"       noun="form" type="script" location="component://core/service/process/process.groovy" method="get_form">
+        <in-parameters>
+            <parameter name="formKey"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="file"/>
+        </out-parameters>
+    </service>
+    <service verb="get"       noun="variables" type="script" location="component://core/service/process/process.groovy" method="get_variables">
+        <in-parameters>
+            <parameter name="taskId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="variable" type="List"/>
+        </out-parameters>
+    </service>
+    <service verb="complete"  noun="task" type="script" location="component://core/service/process/process.groovy" method="complete_task">
+        <in-parameters>
+            <parameter name="taskId"/>
+            <parameter name="variables" type="Map"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="get"       noun="taskHistory" type="script" location="component://core/service/process/process.groovy" method="get_task_history">
+        <in-parameters>
+            <parameter name="username"/>
+            <parameter name="firstResult"/>
+            <parameter name="maxResults"/>
+            <parameter name="taskName"/>
+            <parameter name="processDefinitionKey"/>
+            <parameter name="startedAfter" type="Date"/>
+            <parameter name="startedBefore" type="Date"/>
+            <parameter name="finishedBefore" type="Date"/>
+            <parameter name="finishedAfter" type="Date"/>
+            <parameter name="businessKey"/>
+            <parameter name="businessKeyList" type="List"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="task"/>
+            <parameter name="process"/>
+            <parameter name="status"/>
+            <parameter name="errorDescription"/>
+        </out-parameters>
+        <actions>
+            <set field="status" from="''"/>
+            <set field="task" from="[]"/>
+            <set field="process" from="[]"/>
+            <set field="errorDescription" from="''"/>
+            <script>
+
+            </script>
+        </actions>
+    </service>
+
+
+</services>

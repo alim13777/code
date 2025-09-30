@@ -1,0 +1,27 @@
+<services>
+
+    <service verb="create"  noun="invoice"    type="script" location="component://core/service/customer/customer.groovy" method="create_invoice">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="planId" label="شناسه طرح" required="true"/>
+            <parameter name="discountCode"/>
+            <parameter name="discountId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="url"/>
+        </out-parameters>
+    </service>
+    <service verb="create"  noun="invoice_v2" type="script" location="component://core/service/customer/customer.groovy" method="create_invoice_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="planId" label="شناسه طرح" required="true"/>
+            <parameter name="discountCode" label="کد تخفیف"/>
+            <parameter name="discountId" label="شناسه تخفیف"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="url"/>
+        </out-parameters>
+    </service>
+
+
+</services>

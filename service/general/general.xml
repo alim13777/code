@@ -1,0 +1,230 @@
+<services>
+
+    <service verb="get"      noun="dataValue"      type="script"  location="component://core/service/general/general.groovy"  method="get_data_value">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="data"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="location"       type="script"  location="component://core/service/general/general.groovy"  method="get_location">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="input"/>
+            <parameter name="output"/>
+            <parameter name="inputValue"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="location"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="message"        type="script"  location="component://core/service/general/general.groovy"  method="create_message">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="content"/>
+            <parameter name="phone"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="appSetting"     type="script"  location="component://core/service/general/general.groovy"  method="get_setting">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="packageName"/>
+            <parameter name="token"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="setting"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="logout"         type="script"  location="component://core/service/general/general.groovy"  method="logout" >
+        <implements service="base.BaseService"/>
+        <in-parameters>
+        </in-parameters>
+    </service>
+    <service verb="export"   noun="excel"          type="script"  location="component://core/service/general/general.groovy"  method="export_excel">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="data" type="List"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="encoded"/>
+        </out-parameters>
+    </service>
+    <service verb="login"    noun="webView"        type="script"  location="component://core/service/general/general.groovy"  method="login_webview"  authenticate="anonymous-all">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="cookie"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="curToken"/>
+        </out-parameters>
+    </service>
+    <service verb="read"     noun="excel"          type="script"  location="component://core/service/general/general.groovy"  method="read_excel" >
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="fileId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="data"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="token"          type="script"  location="component://core/service/general/general.groovy"  method="get_token"   authenticate="anonymous-all">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="code" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="username"/>
+            <parameter name="token"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="authToken"      type="script"  location="component://core/service/general/general.groovy"  method="get_auth_token" >
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="clientId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="token"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="dataType"       type="script"  location="component://core/service/general/general.groovy"  method="get_data_type">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="data"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="step"           type="script"  location="component://core/service/general/general.groovy"  method="create_step">
+        <in-parameters>
+            <parameter name="username"/>
+            <parameter name="step" type="Integer"/>
+            <parameter name="isSkip"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="step"           type="script"  location="component://core/service/general/general.groovy"  method="get_step">
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+            <parameter name="step"/>
+            <parameter name="mobile"/>
+            <parameter name="isSkip"/>
+            <parameter name="hasPlan"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="menu"           type="script"  location="component://core/service/general/general.groovy"  method="get_menu">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="webView" type="Boolean"/>
+            <parameter name="isLogin" type="Boolean" default="false"/>
+            <parameter name="cookie"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="menu"/>
+            <parameter name="loginKey"/>
+            <parameter name="userFullName"/>
+            <parameter name="username"/>
+            <parameter name="userPic"/>
+            <parameter name="activePlan"/>
+            <parameter name="orgName"/>
+            <parameter name="daysLeft"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="enum"           type="script"  location="component://core/service/general/general.groovy"  method="get_enum">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type" type="String"  label="نوع"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="enums"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="enum"           type="script"  location="component://core/service/general/general.groovy"  method="create_enum">
+        <in-parameters>
+            <auto-parameters entity-name="Enumeration"/>
+        </in-parameters>
+    </service>
+    <service verb="update"   noun="enum"           type="script"  location="component://core/service/general/general.groovy"  method="update_enum">
+        <in-parameters>
+            <auto-parameters entity-name="Enumeration"/>
+        </in-parameters>
+    </service>
+    <service verb="delete"   noun="enum"           type="script"  location="component://core/service/general/general.groovy"  method="delete_enum">
+        <in-parameters>
+            <parameter name="enumId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+        </out-parameters>
+        <actions>
+            <script>
+                try{
+                ec.service.sync().name("delete#Enumeration").parameters(context).call()
+                state=1
+                }
+                catch(Exception e){
+                e.printStackTrace()
+                state=0
+                }
+            </script>
+        </actions>
+    </service>
+    <service verb="clear"    noun="cache"          type="script"  location="component:/core/service/general/general.groovy"   method="clear_cache"/>
+    <service verb="get"      noun="connection"     type="script"  location="component://core/service/general/general.groovy"  method="get_sql_connection">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="sql" type="groovy.sql.Sql"/>
+        </out-parameters>
+    </service>
+    <service verb="check"    noun="health"         type="script"  location="component://core/service/general/general.groovy"  method="check_health" authenticate="anonymous-all">
+        <implements service="base.BaseService"/>
+    </service>
+
+
+    <service verb="send"     noun="message" authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="content"/>
+            <parameter name="phone"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="Sms" list="smsList" limit="10">
+                <econdition field-name="sendTime" operator="is-null"/>
+            </entity-find>
+            <script>
+                try{
+                if(smsList.size()==0)return
+                smsList.each{sms->
+                data=[:]
+                data.text=sms.text
+                if(!sms.mobile){
+                ec.service.sync().name("update#Sms").parameters([smsId:sms?.smsId,sendTime:new Date()]).call()
+                return;
+                }
+                url="Apps/SmsSend"
+                token=org.moqui.util.SystemBinding.getPropOrEnv('_systemToken')
+                users=sms?.mobile?.split(",")?.toList().unique()
+                users.each{e->
+                data.to=e
+                serviceCall=ec.service.sync().name("api.api.execute#post").parameters([postData:data,url:url,token:token]).call()
+                }
+                ec.service.sync().name("update#Sms").parameters([smsId:sms?.smsId,sendTime:new Date()]).call()
+                }
+                }
+                catch(Exception e){
+                e.printStackTrace()
+                }
+            </script>
+        </actions>
+    </service>
+
+</services>

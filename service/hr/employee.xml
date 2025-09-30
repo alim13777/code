@@ -1,0 +1,248 @@
+<services>
+
+
+    <service verb="disable" noun="employee"       type="script"     location="component://core/service/hr/hr.groovy"
+             method="disable_employee">
+        <in-parameters>
+            <parameter name="employeeId" label="شناسه پرسنل"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="get"     noun="userEmployee"   type="script" location="component://core/service/hr/hr.groovy"
+             method="get_userEmployee">
+        <in-parameters>
+            <parameter name="username" label="شناسه کاربری" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="employee"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="create" noun="profileFile" type="script"     location="component://core/service/hr/hr.groovy"
+             method="create_profileFile">
+        <in-parameters>
+            <parameter name="username" type="String" required="true" label="نام کاربری"/>
+            <parameter name="filename" type="String" required="false" label="نام فایل"/>
+            <parameter name="file" type="org.apache.commons.fileupload.FileItem" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="url"/>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="get"    noun="profileFile" type="script"    location="component://core/service/hr/hr.groovy"
+             method="get_profileFile">
+        <in-parameters>
+            <parameter name="username" type="String" required="true" label="نام کاربری"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="url"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="get"    noun="profile"     type="script"    location="component://core/service/hr/hr.groovy"       method="get_profile" authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="username" required="true" label="نام کاربری"/>
+        </in-parameters>
+    </service>
+    <service verb="get"    noun="manager"     type="script"    location="component://core/service/hr/hr.groovy"       method="get_manager">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="employeeId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="manager"/>
+        </out-parameters>
+    </service>
+    <service verb="get"    noun="manager_v2"  type="script"    location="component://core/service/hr/hr.groovy"       method="get_managers">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="employeeId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="manager"/>
+        </out-parameters>
+    </service>
+    <service verb="create" noun="employee"    type="script"    location="component://core/service/hr/employee.groovy" method="create_employee">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name" label="نام"/>
+            <parameter name="family" label="نام خانوادگی"/>
+            <parameter name="nationalId" label="کد ملی">
+                <text-nationalId/>
+            </parameter>
+            <parameter name="mobile" label="شماره همراه">
+                <text-mobile/>
+            </parameter>
+            <parameter name="unitId" label="شناسه واحد"/>
+            <parameter name="role" label="نقش سازمانی"/>
+            <parameter name="profileFileId" label="تصویر"/>
+            <parameter name="gender" label="جنسیت"/>
+            <parameter name="empType" label="نوع قرارداد" default-value="0"/>
+            <parameter name="dayFloat" label="شناوری روزانه"/>
+            <parameter name="monthFloat" label="شناوری ماهانه"/>
+            <parameter name="empDate" label="تاریخ استخدام"/>
+            <parameter name="endDate" label="تاریخ اتمام همکاری"/>
+            <parameter name="birthDate" label="تاریخ تولد"/>
+            <parameter name="karkard" label="کارکرد موظفی"/>
+            <parameter name="orgId" label="شناسه سازمان"/>
+            <parameter name="employmentId" label="شناسه نقش در سازمان"/>
+            <parameter name="device" label="دستگاه"/>
+            <parameter name="locationCheck" label="چک کاربر"/>
+            <parameter name="password" label="رمز عبور"/>
+            <parameter name="passwordVerify" label=" تکرار رمز عبور"/>
+            <parameter name="isAdmin" default-value="false" type="Boolean" label="ادمین"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="employeeId"/>
+        </out-parameters>
+    </service>
+    <service verb="create" noun="employee_v2" type="script"    location="component://core/service/hr/employee.groovy" method="create_employee_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name" required="true" label="نام"/>
+            <parameter name="family" required="true" label="  نام خانوادگی"/>
+            <parameter name="nationalId" required="true" label="کد ملی">
+                <text-nationalId/>
+            </parameter>
+            <parameter name="mobile" required="true" label="شماره تماس">
+                <text-mobile/>
+            </parameter>
+            <parameter name="unitId" label="شناسه واحد" required="true"/>
+            <parameter name="role" label="نقش سازمانی" required="true"/>
+            <parameter name="device" label="دستگاه"/>
+            <parameter name="locationCheck" label="مکان"/>
+            <parameter name="profileFileId" label="تصویر"/>
+            <parameter name="gender" label="جنسیت"/>
+            <parameter name="empType" label="نوع قرارداد" default-value="0"/>
+            <parameter name="dayFloat" label="شناوری روزانه"/>
+            <parameter name="monthFloat" label="شناوری ماهانه"/>
+            <parameter name="empDate" label="تاریخ استخدام"/>
+            <parameter name="endDate" label="تاریخ اتمام همکاری"/>
+            <parameter name="birthDate" label="تاریخ تولد"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="employeeId"/>
+        </out-parameters>
+    </service>
+    <service verb="delete" noun="employee"    type="script"    location="component://core/service/hr/employee.groovy" method="delete_employee">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="employeeId" required="true" label="شناسه پرسنل"/>
+        </in-parameters>
+    </service>
+    <service verb="update" noun="employee"    type="script"    location="component://core/service/hr/employee.groovy" method="update_employee">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="employeeId"/>
+            <parameter name="name"/>
+            <parameter name="family"/>
+            <parameter name="empType" default-value="0"/>
+            <parameter name="birthDate"/>
+            <parameter name="gender"/>
+            <parameter name="nationalId"/>
+            <parameter name="pelak"/>
+            <parameter name="profileFileId"/>
+            <parameter name="empDate"/>
+            <parameter name="endDate"/>
+            <parameter name="karkard"/>
+            <parameter name="orgId"/>
+            <parameter name="mobile"/>
+            <parameter name="unitId"/>
+            <parameter name="employmentId"/>
+            <parameter name="dayFloat"/>
+            <parameter name="monthFloat"/>
+            <parameter name="role"/>
+            <parameter name="device"/>
+            <parameter name="locationCheck"/>
+            <parameter name="karmand" type="Map"/>
+            <parameter name="modirList" type="List"/>
+        </in-parameters>
+    </service>
+    <service verb="update" noun="employee_v2" type="script"    location="component://core/service/hr/employee.groovy" method="update_employee_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name" required="true" label="نام"/>
+            <parameter name="family" required="true" label="نام خانوادگی"/>
+            <parameter name="nationalId" required="true" label="کد ملی">
+                <text-nationalId/>
+            </parameter>
+            <parameter name="mobile" required="true" label="شماره همراه">
+                <text-mobile/>
+            </parameter>
+            <parameter name="unitId" label="شناسه واحد" required="true"/>
+            <parameter name="role" label="نقش سازمانی" required="true"/>
+            <parameter name="employeeId" required="true" label="شناسه پرسنلی"/>
+            <parameter name="profileFileId" label="تصویر"/>
+            <parameter name="device" label="دستگاه"/>
+            <parameter name="locationCheck" label="مکان"/>
+            <parameter name="gender" label="جنسیت"/>
+            <parameter name="empType" label="نوع قرارداد" default-value="0"/>
+            <parameter name="dayFloat" label="شناوری روزانه"/>
+            <parameter name="monthFloat" label="شناوری ماهانه"/>
+            <parameter name="empDate" label="تاریخ استخدام"/>
+            <parameter name="endDate" label="تاریخ اتمام همکاری"/>
+            <parameter name="birthDate" label="تاریخ تولد"/>
+        </in-parameters>
+    </service>
+    <service verb="get"    noun="employee"    type="script"    location="component://core/service/hr/employee.groovy" method="get_employee">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="employeeIds"/>
+            <parameter name="unitIds"/>
+        </out-parameters>
+    </service>
+    <service verb="delete" noun="emplUnit"    type="script"    location="component://core/service/hr/hr.groovy"       method="delete_empl_unit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="emplUnitId" label="شناسه فرد" required="true"/>
+        </in-parameters>
+    </service>
+    <service verb="create" noun="emplUnit"    type="script"    location="component://core/service/hr/hr.groovy"       method="create_empl_unit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="employeeId" required="true" label="شناسه پرسنل"/>
+            <parameter name="unitId" required="true" label="شناسه واحد"/>
+            <parameter name="orgId" required="true" label="شناسه سازمان"/>
+            <parameter name="role" required="true" label="شناسه نقش"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="emplUnitId"/>
+        </out-parameters>
+    </service>
+    <service verb="search" noun="employee_v2" type="script"    location="component://core/service/hr/employee.groovy" method="search_employee_v2">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="employees"/>
+        </out-parameters>
+    </service>
+    <service verb="search" noun="employee"    type="script"    location="component://core/service/hr/employee.groovy" method="search_employee">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="employees"/>
+        </out-parameters>
+    </service>
+    <service verb="get"    noun="subEmployee" type="script"    location="component://core/service/hr/hr.groovy"       method="get_sub_employee">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="employee"/>
+        </out-parameters>
+    </service>
+    <service verb="get"    noun="unitEmployee" type="script"    location="component://core/service/hr/hr.groovy"      method="get_unit_employee">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="unitId"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="employee"/>
+        </out-parameters>
+    </service>
+
+</services>
+
+
+        

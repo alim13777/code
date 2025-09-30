@@ -1,0 +1,35 @@
+<services>
+
+    <service verb="search"      noun="discount"      type="script"  location="component://core/service/customer/discount.groovy" method="search">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="discount"/>
+        </out-parameters>
+    </service>
+    <service verb="create"      noun="discount"      type="script"  location="component://core/service/customer/discount.groovy" method="create">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="date"/>
+            <auto-parameters entity-name="Discount"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="discountId"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"      noun="discount"      type="script"  location="component://core/service/customer/discount.groovy" method="delete">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="discountId"/>
+        </in-parameters>
+    </service>
+    <service verb="update"      noun="discount"      type="script"  location="component://core/service/customer/discount.groovy" method="update">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="date" type="Long"/>
+            <auto-parameters entity-name="Discount"/>
+        </in-parameters>
+    </service>
+</services>

@@ -1,0 +1,38 @@
+<services>
+    <service verb="get"         noun="loginApps" type="script" location="component://core/service/general/general.groovy" method="get_login_app">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="employeeId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="apps"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"      noun="loginApps" type="script" location="component://core/service/general/general.groovy" method="delete_login_app">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="loginId"/>
+        </in-parameters>
+    </service>
+    <service verb="update"      noun="loginApps" type="script" location="component://core/service/general/general.groovy" method="update_login_app">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="loginId"/>
+            <parameter name="multi"/>
+        </in-parameters>
+    </service>
+    <service verb="get"         noun="setting"   type="script" location="component://core/service/general/general.groovy" method="get_app_setting">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="username"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="orgId"/>
+            <parameter name="requiredLocation"/>
+            <parameter name="locationCheck"/>
+            <parameter name="dailyReportLimit"/>
+            <parameter name="dailyReportIsRequired"/>
+            <parameter name="dailyReportIsEnabled" />
+        </out-parameters>
+    </service>
+</services>

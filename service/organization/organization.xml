@@ -1,0 +1,162 @@
+<services>
+
+
+
+    <service verb="delete"  noun="admin"            type="script"          location="component://core/service/organization/org.groovy"      method="delete_admin">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+    </service>
+    <service verb="get"     noun="unit"             type="script"           location="component://core/service/organization/org.groovy"     method="get_unit">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="locations"/>
+            <parameter name="units"/>
+        </out-parameters>
+    </service>
+    <service verb="get"     noun="plan"             type="script"           location="component://core/service/organization/org.groovy"     method="get_plan">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="plan"/>
+        </out-parameters>
+    </service>
+    <service verb="disable" noun="plan"             type="script"           location="component://core/service/organization/org.groovy"     method="disable_plan" authenticate="false">
+        <implements service="base.BaseService"/>
+    </service>
+    <service verb="disable" noun="organization"     type="script"           location="component://core/service/organization/org.groovy"     method="disable_organization">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+            <parameter name="disable"/>
+        </in-parameters>
+    </service>
+    <service verb="delete"  noun="organization"     type="script"           location="component://core/service/organization/org.groovy"     method="delete_organization">
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="search"  noun="organization"     type="script"           location="component://core/service/organization/org.groovy"     method="search_organization">
+        <in-parameters>
+            <parameter name="name" default="''"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="organizations"/>
+            <parameter name="state"/>
+            <parameter name="total"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="get"     noun="employee"         type="script"           location="component://core/service/organization/org.groovy"     method="get_employee">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="employees"/>
+        </out-parameters>
+    </service>
+    <service verb="create"  noun="admin"            type="script"           location="component://core/service/organization/org.groovy"     method="create_admin">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name"/>
+            <parameter name="family"/>
+            <parameter name="employeeId"/>
+            <parameter name="nationalId"/>
+            <parameter name="birthDate"/>
+            <parameter name="orgId"/>
+            <parameter name="mobile"/>
+            <parameter name="password"/>
+            <parameter name="passwordVerify"/>
+        </in-parameters>
+    </service>
+    <service verb="create"  noun="organization"     type="script"           location="component://core/service/organization/org.groovy"     method="create_organization">
+        <in-parameters>
+            <parameter name="name"/>
+            <parameter name="phone"/>
+            <parameter name="address"/>
+            <parameter name="postalCode"/>
+            <parameter name="registerId"/>
+            <parameter name="checkAdmin"/>
+            <parameter name="checkLocation"/>
+            <parameter name="nationalId"/>
+            <parameter name="economicId"/>
+            <parameter name="admin"/>
+            <parameter name="logo"/>
+            <parameter name="email"/>
+            <parameter name="category"/>
+            <parameter name="disabled"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="orgId"/>
+            <parameter name="unitId"/>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="create"  noun="organization_v2"  type="script"           location="component://core/service/organization/org.groovy"     method="create_organization_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name" label="نام" required="true"/>
+            <parameter name="category" label="دسته بندی" required="true"/>
+            <parameter name="phone" label="شماره تماس"/>
+            <parameter name="email" label="ایمیل">
+                <text-email/>
+            </parameter>
+            <parameter name="logo" label="لوگو"/>
+            <parameter name="adminMobile" label="شماره همراه" required="true">
+                <text-mobile/>
+            </parameter>
+            <parameter name="adminName" label="نام ادمین" required="true"/>
+            <parameter name="adminFamily" label="نام خانوادگی ادمین" required="true"/>
+            <parameter name="adminNationalId" label="کد ملی" required="true">
+                <text-nationalId/>
+            </parameter>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="orgId"/>
+            <parameter name="unitId"/>
+        </out-parameters>
+    </service>
+    <service verb="edit"    noun="organization"     type="script"           location="component://core/service/organization/org.groovy"     method="edit_organization">
+        <in-parameters>
+            <auto-parameters entity-name="Organization">
+                <exclude field-name="startDate"/>
+                <exclude field-name="endDate"/>
+                <exclude field-name="lastUpdatedStamp"/>
+            </auto-parameters>
+            <parameter name="startDate"/>
+            <parameter name="endDate"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="patch"   noun="organization"     type="script"           location="component://core/service/organization/org.groovy"     method="patch_organization">
+        <in-parameters>
+            <parameter name="orgId"/>
+            <parameter name="checkAdmin"/>
+            <parameter name="checkLocation"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="get"     noun="organization"     type="script"           location="component://core/service/organization/org.groovy"     method="get_organization">
+        <out-parameters>
+            <parameter name="org"/>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+
+
+</services>

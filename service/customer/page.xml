@@ -1,0 +1,43 @@
+<services>
+
+    <service verb="get"  noun="customerPage" type="script"     location="component://core/service/customer/plan.groovy"     method="get_customer_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="planList"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="ticketPage"   type="script"     location="component://core/service/customer/plan.groovy"     method="get_ticket_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="statusList"/>
+            <parameter name="orgList"/>
+            <parameter name="importance"/>
+            <parameter name="section"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="createPage"   type="script"     location="component://core/service/customer/plan.groovy"     method="get_create_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="importance"/>
+            <parameter name="section"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="planPage"     type="script"     location="component://core/service/customer/plan.groovy"     method="get_plan_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="category"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="planListPage" type="script"     location="component://core/service/customer/plan.groovy"     method="get_plan_list_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="type"/>
+            <parameter name="category"/>
+            <parameter name="org"/>
+            <parameter name="planList"/>
+            <parameter name="currentPlan"/>
+        </out-parameters>
+    </service>
+
+
+</services>

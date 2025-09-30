@@ -1,0 +1,101 @@
+<services>
+
+    <service verb="get"      noun="userLocation"        type="script" location="component://core/service/entering/location.groovy"     method="get_user_location">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="location" type="List"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="userLocations"       type="script" location="component://core/service/entering/location.groovy"     method="get_user_locations">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="username"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="locations" type="List"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="userLocation"        type="script" location="component://core/service/entering/location.groovy"     method="create_user_location">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="locationId"/>
+            <parameter name="users" type="List"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="userLocationId"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"   noun="userLocation"        type="script" location="component://core/service/entering/location.groovy"     method="delete_user_location">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="userLocationId"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="enteringLocation"    type="script" location="component://core/service/entering/location.groovy"     method="get_entering_location">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="location" type="List"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="enteringLocation_v2" type="script" location="component://core/service/entering/location.groovy"     method="get_entering_location_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="location" type="List"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"   noun="enteringLocation"    type="script" location="component://core/service/entering/location.groovy"     method="delete_entering_location">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="enteringLocationId"/>
+        </in-parameters>
+    </service>
+    <service verb="update"   noun="enteringLocation"    type="script" location="component://core/service/entering/location.groovy"     method="update_entering_location">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="enteringLocationId"/>
+            <parameter name="point"/>
+            <parameter name="radius"/>
+            <parameter name="description"/>
+            <parameter name="name"/>
+            <parameter name="users" type="List"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+    </service>
+    <service verb="create"   noun="enteringLocation"    type="script" location="component://core/service/entering/location.groovy"     method="create_entering_location">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="point"/>
+            <parameter name="radius"/>
+            <parameter name="description"/>
+            <parameter name="name"/>
+            <parameter name="orgId"/>
+            <parameter name="client"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="locationId"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="enteringLocation_v2" type="script" location="component://core/service/entering/location.groovy"     method="create_entering_location_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="point" required="true" label="موقعیت جغرافیایی"/>
+            <parameter name="radius" required="true" label="شعاع"/>
+            <parameter name="description" label="توضیحات"/>
+            <parameter name="name" required="true" label="نام"/>
+            <parameter name="users" type="List" label="لیست کاربران"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="locationId"/>
+        </out-parameters>
+    </service>
+
+</services>

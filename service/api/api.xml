@@ -1,0 +1,100 @@
+<services>
+
+    <service verb="execute" noun="get"          type="script" location="component://core/service/api/api.groovy"     method="execute_get">
+        <in-parameters>
+            <parameter name="url"/>
+            <parameter name="token"/>
+            <parameter name="version" default="v1"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="data"/>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="execute" noun="patch"        type="script" location="component://core/service/api/api.groovy"     method="execute_patch">
+        <in-parameters>
+            <parameter name="url"/>
+            <parameter name="token"/>
+            <parameter name="version" default="v1"/>
+            <parameter name="postData" type="Map" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="execute" noun="post"         type="script" location="component://core/service/api/api.groovy"     method="execute_post">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="version"/>
+            <parameter name="fullUrl"/>
+            <parameter name="url"/>
+            <parameter name="token"/>
+            <parameter name="postData" type="Map" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="data"/>
+        </out-parameters>
+    </service>
+    <service verb="execute" noun="put"          type="script" location="component://core/service/api/api.groovy"     method="execute_put">
+        <in-parameters>
+            <parameter name="version"/>
+            <parameter name="url"/>
+            <parameter name="token"/>
+            <parameter name="postData" type="Map" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="data"/>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="execute" noun="delete"       type="script" location="component://core/service/api/api.groovy"     method="execute_delete">
+        <in-parameters>
+            <parameter name="token"/>
+            <parameter name="url"/>
+            <parameter name="version"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="request" noun="post"         type="script" location="component://core/service/api/api.groovy"     method="request_post">
+        <in-parameters>
+            <parameter name="data" type="org.apache.http.HttpEntity"/>
+            <parameter name="url"/>
+            <parameter name="version"/>
+            <parameter name="token"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+
+    </service>
+    <service verb="get"     noun="connection"   type="script" location="component://core/service/api/api.groovy"     method="get_connection">
+        <in-parameters>
+            <parameter name="databaseName"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="sql"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="execute" noun="zarinPalPost" type="script" location="component://core/service/api/api.groovy"     method="execute_post_zarinpal">
+        <in-parameters>
+            <parameter name="url"/>
+            <parameter name="data" type="Map" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="data"/>
+            <parameter name="state" type="Integer"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+</services>
+
+
+

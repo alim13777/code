@@ -1,0 +1,56 @@
+<services>
+
+    <service verb="get"   noun="karnameh"      type="script" location="component://core/service/entering/karkard.groovy" method="karnameh">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="username" required="true" label="شناسه کاربر"/>
+            <parameter name="startDate" label="تاریخ شروع" required="true"/>
+            <parameter name="endDate" label="تاریخ پایان" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="finalArray"/>
+        </out-parameters>
+    </service>
+    <service verb="get"   noun="karkard"       type="script" location="component://core/service/entering/karkard.groovy" method="karkard">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="username" required="true" label="شناسه کاربر"/>
+            <parameter name="startDate" label="تاریخ شروع" required="true"/>
+            <parameter name="endDate" label="تاریخ پایان" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="finalArray"/>
+        </out-parameters>
+    </service>
+    <service verb="get"   noun="dailyKarkard"  type="script" location="component://core/service/entering/karkard.groovy" method="dailyKarkard">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="date" required="true" label="تاریخ"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="karkardList"/>
+        </out-parameters>
+    </service>
+    <service verb="get"   noun="karnamehList"  type="script" location="component://core/service/entering/karkard.groovy" method="karnamehList">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="startDate" label="تاریخ شروع" required="true"/>
+            <parameter name="endDate" label="تاریخ پایان" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="karkards"/>
+            <parameter name="userLength"/>
+        </out-parameters>
+    </service>
+    <service verb="get"   noun="location"      type="script" location="component://core/service/entering/karkard.groovy" method="getLocation">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="date" required="true" label="تاریخ"/>
+            <parameter name="username" required="true" label="شناسه کاربری"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="locations"/>
+        </out-parameters>
+    </service>
+
+</services>

@@ -1,0 +1,41 @@
+<services>
+
+    <service verb="search"   noun="customer"  type="script"   location="component://core/service/customer/customer.groovy" method="search_customer">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="planId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="customers"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="plan"      type="script"   location="component://core/service/customer/customer.groovy" method="get_customer_plan">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="plans"/>
+        </out-parameters>
+    </service>
+    <service verb="check"    noun="discount"  type="script"   location="component://core/service/customer/customer.groovy" method="check_discount">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="code"   required="true"/>
+            <parameter name="planId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="payAmount"/>
+            <parameter name="discountId"/>
+            <parameter name="discount"/>
+        </out-parameters>
+    </service>
+    <service verb="check"    noun="plan"      type="script"   location="component://core/service/customer/customer.groovy" method="check_plan" authenticate="anonymous-all">
+
+    </service>
+    <service verb="send"     noun="sms"       type="script"   location="component://core/service/customer/customer.groovy" method="send_sms"   authenticate="anonymous-all"/>
+    <service verb="buy"      noun="plan"      type="script"   location="component://core/service/customer/customer.groovy" method="buy_plan"   authenticate="anonymous-all">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="Status" required="true" label="وضعیت"/>
+            <parameter name="Authority" required="true" label="کد"/>
+        </in-parameters>
+    </service>
+</services>

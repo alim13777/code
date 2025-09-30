@@ -1,0 +1,52 @@
+<services>
+
+    <service verb="get"      noun="userGroup">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="groups"/>
+        </out-parameters>
+        <actions>
+            <script>
+                name=name?name:""
+                try{
+            </script>
+            <entity-find  entity-name="UserGroup" list="groups">
+                <econdition field-name="userGroupId" operator="LIKE" value="%${name}%" ignore-if-empty="true"/>
+                <econdition field-name="groupTypeEnumId" operator="equals" value="UGALL"/>
+            </entity-find>
+            <script>
+                state=1
+                }
+                catch(Exception e){
+                e.printStackTrace()
+                state=0
+                }
+            </script>
+        </actions>
+    </service>
+    <service verb="delete"   noun="userGroup" type="script" location="component://core/service/security/security.groovy" method="delete_user_group">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="userGroupId"/>
+        </in-parameters>
+    </service>
+    <service verb="create"   noun="userGroup" type="script" location="component://core/service/security/security.groovy" method="create_user_group">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="userGroupId"/>
+            <parameter name="description"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="userGroupId"/>
+        </out-parameters>
+    </service>
+    <service verb="edit"     noun="userGroup" type="script" location="component://core/service/security/security.groovy" method="update_user_group">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <auto-parameters entity-name="UserGroup"/>
+        </in-parameters>
+    </service>
+</services>

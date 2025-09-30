@@ -1,0 +1,63 @@
+<services>
+
+    <service verb="send"     noun="notification"      type="script"  location="component://core/service/message/message.groovy" method="send_notification">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="users" type="List"/>
+            <parameter name="title"/>
+            <parameter name="url"/>
+            <parameter name="body"/>
+            <parameter name="client"/>
+            <parameter name="date"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="notification"      type="script"  location="component://core/service/message/message.groovy" method="get_notification">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="userId"/>
+            <parameter name="clientId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="notification"/>
+        </out-parameters>
+
+    </service>
+    <service verb="get"      noun="notificationUsers" type="script"  location="component://core/service/message/message.groovy" method="get_notification_users">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="notificationId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="users"/>
+        </out-parameters>
+    </service>
+    <service verb="send"     noun="notificationExcel" type="script"  location="component://core/service/message/message.groovy" method="send_notification_excel">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="fileId"/>
+            <parameter name="title"/>
+            <parameter name="text"/>
+            <parameter name="client"/>
+        </in-parameters>
+    </service>
+    <service verb="receive"  noun="notificationFile"  type="script"  location="component://core/service/message/message.groovy" method="receive_notification_file">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+                <parameter name="file" type="org.apache.commons.fileupload.FileItem"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="fileId"/>
+            <parameter name="keys"/>
+        </out-parameters>
+    </service>
+    <service verb="read"     noun="excel"             type="script"  location="component://core/service/message/message.groovy" method="read_excel">
+        <implements service="base.BaseService"  />
+        <in-parameters>
+            <parameter name="file" type="org.apache.commons.fileupload.FileItem"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="data"/>
+        </out-parameters>
+    </service>
+
+</services>

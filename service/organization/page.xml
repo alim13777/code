@@ -1,0 +1,35 @@
+<services>
+
+    <service verb="get"  noun="createUnit" type="script" location="component://core/service/organization/unit.groovy" method="create_page">
+        <out-parameters>
+            <parameter name="organizations"/>
+            <parameter name="organization"/>
+            <parameter name="roles"/>
+            <parameter name="state"/>
+            <parameter name="employees"/>
+            <parameter name="units"/>
+            <parameter name="isAdmin"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="createUnit_v2" type="script" location="component://core/service/organization/unit.groovy" method="create_page_v2">
+        <out-parameters>
+            <parameter name="employees"/>
+            <parameter name="category"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="shiftPage"       type="script"  location="component://core/service/organization/shift.groovy" method="get_shiftPage">
+        <out-parameters>
+            <parameter name="units"/>
+            <parameter name="organizations"/>
+            <parameter name="organization"/>
+            <parameter name="isAdmin"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="createPage"  type="script" location="component://core/service/organization/org.groovy" method="get_createPage">
+        <out-parameters>
+            <parameter name="category"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+
+</services>

@@ -1,0 +1,173 @@
+<services>
+
+    <service verb="search"    noun="user"          type="script" location="component://core/service/security/security.groovy" method="search_user">
+        <in-parameters>
+            <parameter name="username"/>
+            <parameter name="text"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="user"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="logout"    noun="user"          type="script" location="component://core/service/security/security.groovy" method="logout_user">
+    </service>
+    <service verb="create"    noun="user"          type="script" location="component://core/service/security/security.groovy" method="create_user">
+        <in-parameters>
+            <parameter name="username" />
+            <parameter name="userCode" />
+            <parameter name="name" />
+            <parameter name="family" />
+            <parameter name="isAdmin"  type="Boolean" default="false"/>
+            <parameter name="isModir"  type="Boolean" default="false"/>
+            <parameter name="employeeId"/>
+            <parameter name="nationalId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+
+    </service>
+    <service verb="get"       noun="user"          type="script" location="component://core/service/security/security.groovy" method="get_user">
+        <in-parameters>
+            <parameter name="username"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="user"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="get"       noun="groups"        type="script" location="component://core/service/security/security.groovy" method="get_groups">
+        <in-parameters>
+            <parameter name="username"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="user"/>
+            <parameter name="group"/>
+            <parameter name="description"/>
+        </out-parameters>
+
+
+    </service>
+    <service verb="create"    noun="groups"        type="script" location="component://core/service/security/security.groovy" method="create_groups">
+        <in-parameters>
+            <parameter name="username"/>
+            <parameter name="userGroupList" type="List"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"    noun="groups"        type="script" location="component://core/service/security/security.groovy" method="delete_groups">
+        <in-parameters>
+            <parameter name="userGroupId"/>
+            <parameter name="username"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="check"     noun="login"         type="script" location="component://core/service/security/security.groovy" method="check_login">
+        <in-parameters>
+            <parameter name="username"/>
+            <parameter name="device"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="canLogin" type="Boolean"/>
+            <parameter name="state"/>
+            <parameter name="description"/>
+            <parameter name="isAdmin"/>
+        </out-parameters>
+    </service>
+    <service verb="get"       noun="expireUsers"   type="script" location="component://core/service/security/security.groovy" method="get_expire_users">
+        <out-parameters>
+            <parameter name="users"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="expire"    noun="app"           type="script" location="component://core/service/security/security.groovy" method="expire_app">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="clientId"/>
+            <parameter name="users" type="List"/>
+        </in-parameters>
+    </service>
+    <service verb="signUp"    noun="user"          type="script" location="component://core/service/security/security.groovy" method="signup_user"  authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="planId"/>
+            <parameter name="username"/>
+            <parameter name="name"/>
+            <parameter name="family"/>
+            <parameter name="username"/>
+        </in-parameters>
+    </service>
+    <service verb="validate"  noun="otp"           type="script" location="component://core/service/security/security.groovy" method="validate_otp" authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="code"/>
+            <parameter name="mobile"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="loginKey"/>
+            <parameter name="state"/>
+            <parameter name="description"/>
+            <parameter name="wizardCompleted"/>
+            <parameter name="stepNum"/>
+            <parameter name="isSkip"/>
+            <parameter name="hasPlan"/>
+        </out-parameters>
+    </service>
+    <service verb="send"      noun="otp"           type="script" location="component://core/service/security/security.groovy" method="send_otp"     authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="mobile"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="hasAccount"/>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="check"     noun="user"          type="script" location="component://core/service/security/security.groovy" method="check_user">
+        <out-parameters>
+            <parameter name="username"/>
+            <parameter name="userFullName"/>
+            <parameter name="wizardCompleted"/>
+            <parameter name="stepNum"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="update"     noun="password"     type="script" location="component://core/service/security/security.groovy" method="update_password">
+        <in-parameters>
+            <parameter name="password" type="String" label="کلمه عبور" required="true"/>
+            <parameter name="passwordVerify" label=" تکرار کلمه عبور" required="true" type="String"/>
+            <parameter name="employeeId" label="شناسه کارمند" required="true"  type="String"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+    <service verb="login"     noun="user"          type="script" location="component://core/service/security/security.groovy" method="login_user" require-authentication="false">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="username" required="true" label="نام کاربری"/>
+            <parameter name="password" required="true" label="کلمه عبور"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="loginKey"/>
+            <parameter name="hasPlan"/>
+        </out-parameters>
+    </service>
+    <service verb="change"    noun="password"      type="script" location="component://core/service/security/security.groovy" method="change_password">
+        <in-parameters>
+            <parameter name="newPassword" label="کلمه عبور" required="true"/>
+            <parameter name="username" label="نام کاربری" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+
+</services>

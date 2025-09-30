@@ -1,0 +1,11 @@
+<services>
+    <service verb="get" noun="notification" type="script"  location="component://core/service/message/message.groovy" method="get_notification_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="orgs"/>
+            <parameter name="units"/>
+            <parameter name="isAdmin"/>
+        </out-parameters>
+    </service>
+
+</services>

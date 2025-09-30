@@ -1,0 +1,60 @@
+<services>
+
+    <service verb="create"   noun="shift"           type="script"    location="component://core/service/organization/shift.groovy" method="create_shift">
+        <in-parameters>
+            <parameter name="withHoliday" type="Boolean" default="false"/>
+            <parameter name="unitId"/>
+            <parameter name="shiftType"/>
+            <parameter name="dayList" type="List"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+            <parameter name="shiftTitle"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="shift_v2"        type="script"    location="component://core/service/organization/shift.groovy" method="create_shift_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="withHoliday" type="Boolean" default="false" label="تعطیلات رسمی"/>
+            <parameter name="dayList" type="List" required="true" label="لیست روزها"/>
+            <parameter name="unitId" type="String" label="شناسه واحد"/>
+            <parameter name="shiftType" type="String" label="نوع شیفت" required="true"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="unitShift"       type="script"    location="component://core/service/organization/shift.groovy" method="get_shift">
+        <in-parameters>
+            <parameter name="unitId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="shifts"/>
+            <parameter name="state"/>
+            <parameter name="withHoliday"/>
+            <parameter name="description"/>
+        </out-parameters>
+
+    </service>
+    <service verb="get"      noun="unitShift_v2"    type="script"    location="component://core/service/organization/shift.groovy" method="get_shift_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="unitId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="shifts"/>
+            <parameter name="withHoliday"/>
+            <parameter name="unitId"/>
+            <parameter name="shiftType"/>
+        </out-parameters>
+
+    </service>
+    <service verb="search"   noun="shift"           type="script"    location="component://core/service/organization/shift.groovy" method="search_shift">
+        <in-parameters>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="shiftList"/>
+            <parameter name="state"/>
+            <parameter name="description"/>
+        </out-parameters>
+    </service>
+</services>

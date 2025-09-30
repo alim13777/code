@@ -1,0 +1,9 @@
+<services>
+    <service verb="BaseService" type="interface">
+        <out-parameters>
+            <parameter name="state" type="Integer"/>
+            <parameter name="description" type="String"/>
+        </out-parameters>
+    </service>
+
+</services>

@@ -1,0 +1,20 @@
+<services>
+
+
+    <service verb="get"  noun="menu"    type="script" location="component://core/service/security/security.groovy" method="get_menu_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="menu"/>
+            <parameter name="userGroup"/>
+        </out-parameters>
+    </service>
+    <service verb="get"  noun="profile" type="script" location="component://core/service/security/security.groovy" method="get_profile_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="group"/>
+            <parameter name="role"/>
+            <parameter name="organization"/>
+        </out-parameters>
+    </service>
+
+</services>

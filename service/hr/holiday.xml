@@ -1,0 +1,46 @@
+<services>
+
+    <service verb="create"  noun="holiday" type="script" location="component://core/service/hr/hr.groovy" method="create_holiday">
+        <in-parameters>
+            <parameter name="date" required="true" />
+            <parameter name="title" required="true"/>
+            <parameter name="description"/>        </in-parameters>
+        <out-parameters>
+            <parameter name="description"/>
+            <parameter name="state"/>
+            <parameter name="holidayId"/>
+        </out-parameters>
+    </service>
+    <service verb="search"  noun="holiday" type="script" location="component://core/service/hr/hr.groovy" method="search_holiday">
+        <in-parameters>
+            <parameter name="year"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="holiday"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="update"  noun="holiday" type="script" location="component://core/service/hr/hr.groovy" method="update_holiday">
+        <in-parameters>
+            <parameter name="holidayId" required="true"/>
+            <parameter name="date" required="true" type="String"/>
+            <parameter name="title" required="true"/>
+            <parameter name="description"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"  noun="holiday" type="script" location="component://core/service/hr/hr.groovy" method="delete_holiday">
+        <in-parameters>
+            <parameter name="holidayId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+
+
+</services>

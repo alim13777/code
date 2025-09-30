@@ -1,0 +1,174 @@
+<services>
+
+    <service verb="create" noun="enteringCorrection" type="script"
+             location="component://core/service/entering/request.groovy" method="create_correction">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="requestId"/>
+            <parameter name="description" default=""/>
+            <parameter name="date"/>
+            <parameter name="startTime"/>
+            <parameter name="endTime"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="enteringId"/>
+        </out-parameters>
+    </service>
+    <service verb="update" noun="enteringCorrection" type="script"
+             location="component://core/service/entering/request.groovy" method="update_correction">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="enteringId"/>
+            <parameter name="description" default=""/>
+            <parameter name="date"/>
+            <parameter name="startTime"/>
+            <parameter name="endTime"/>
+        </in-parameters>
+    </service>
+    <service verb="register" noun="entering" type="script" location="component://core/service/entering/request.groovy"
+             method="register_correction">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="date"/>
+            <parameter name="currentTime"/>
+            <parameter name="newTime"/>
+            <parameter name="userCode"/>
+            <parameter name="clientId"/>
+        </in-parameters>
+
+    </service>
+
+    <service verb="create" noun="hourly" type="script" location="component://core/service/entering/request.groovy"
+             method="create_hourly">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="requestId"/>
+            <parameter name="description" default=""/>
+            <parameter name="date"/>
+            <parameter name="startTime"/>
+            <parameter name="hourlyRequestId"/>
+            <parameter name="endTime"/>
+            <parameter name="location"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="hourlyId"/>
+        </out-parameters>
+    </service>
+    <service verb="update" noun="hourly" type="script" location="component://core/service/entering/request.groovy"
+             method="update_hourly">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="hourlyId"/>
+            <parameter name="description" default=""/>
+            <parameter name="date"/>
+            <parameter name="startTime"/>
+            <parameter name="hourlyRequestId"/>
+            <parameter name="endTime"/>
+            <parameter name="location"/>
+        </in-parameters>
+    </service>
+    <service verb="register" noun="hourly" type="script" location="component://core/service/entering/request.groovy"
+             method="register_hourly">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="hourlyRequestId"/>
+            <parameter name="type"/>
+            <parameter name="clientId"/>
+            <parameter name="userCode"/>
+        </in-parameters>
+    </service>
+    <service verb="get" noun="hourlyRange" type="script" location="component://core/service/entering/request.groovy"
+             method="get_hourly_range">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="userCode"/>
+            <parameter name="date"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="validRange"/>
+        </out-parameters>
+    </service>
+
+    <service verb="create" noun="mission" type="script" location="component://core/service/entering/request.groovy"
+             method="create_mission">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="requestId"/>
+            <parameter name="description" default=""/>
+            <parameter name="date"/>
+            <parameter name="startTime"/>
+            <parameter name="endTime"/>
+            <parameter name="location"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="missionId"/>
+        </out-parameters>
+    </service>
+    <service verb="update" noun="mission" type="script" location="component://core/service/entering/request.groovy"
+             method="update_mission">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="startTime"/>
+            <parameter name="endTime"/>
+            <parameter name="missionId"/>
+            <parameter name="description"/>
+            <parameter name="location"/>
+            <parameter name="date"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="errorDescription"/>
+        </out-parameters>
+    </service>
+
+
+    <service verb="create"   noun="vacation"        type="script" location="component://core/service/entering/request.groovy" method="create_vacation">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="requestId"/>
+            <parameter name="description" default=""/>
+            <parameter name="type"/>
+            <parameter name="date"/>
+            <parameter name="fileId"/>
+            <parameter name="token"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="vacationId"/>
+        </out-parameters>
+    </service>
+    <service verb="update"   noun="vacation"        type="script" location="component://core/service/entering/request.groovy" method="update_vacation">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="vacationId"/>
+            <parameter name="description" default=""/>
+            <parameter name="type"/>
+            <parameter name="date"/>
+            <parameter name="fileId"/>
+            <parameter name="token"/>
+            <parameter name="partyId"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="vacationType"    type="script" location="component://core/service/entering/request.groovy" method="get_vacation_type">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="vacationId" type="Integer"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="vacationList"/>
+        </out-parameters>
+
+    </service>
+    <service verb="register" noun="daily"           type="script" location="component://core/service/entering/request.groovy" method="register_daily_request">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="userCode"/>
+            <parameter name="date"/>
+            <parameter name="type"/>
+            <parameter name="clientId"/>
+            <parameter name="description" default=""/>
+        </in-parameters>
+
+
+    </service>
+
+</services>

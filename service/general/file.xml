@@ -1,0 +1,161 @@
+<services>
+
+    <service verb="get"      noun="file"         type="script" location="component://core/service/general/file.groovy"     method="get_file">
+        <in-parameters>
+            <parameter name="fileId"/>
+        </in-parameters>
+    </service>
+    <service verb="download" noun="file"         type="script" location="component://core/service/general/file.groovy"     method="download_file" authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="fileId"/>
+        </in-parameters>
+    </service>
+    <service verb="open"     noun="file"         type="script" location="component://core/service/general/file.groovy"     method="open_file"     authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="fileId"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="fileInfo"     type="script" location="component://core/service/general/file.groovy"     method="get_file_info">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="fileId"/>
+            <parameter name="url"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="file"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="file"         type="script" location="component://core/service/general/file.groovy"     method="create_file">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="file" type="org.apache.commons.fileupload.FileItem"/>
+            <parameter name="name"/>
+            <parameter name="type"/>
+            <parameter name="fileEntityName" default="'trn.common.trnFile'"/>
+            <parameter name="extension"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="fileId"/>
+            <parameter name="url"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="url"          type="script" location="component://core/service/general/file.groovy"     method="get_url">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+
+        </in-parameters>
+        <out-parameters>
+          <parameter name="url"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="apiFile"      type="script" location="component://core/service/general/file.groovy"     method="create_api_file">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="requestId"/>
+            <parameter name="file"  type="org.apache.commons.fileupload.FileItem"/>
+        </in-parameters>
+    </service>
+    <service verb="create"   noun="base64File"   type="script" location="component://core/service/general/file.groovy"     method="create_base64_file">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name"/>
+            <parameter name="fileContent" type="org.apache.commons.fileupload.FileItem"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="type"/>
+            <parameter name="fileId"/>
+            <parameter name="url"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="file_v2"      type="script" location="component://core/service/general/file.groovy"     method="create_file_v2">
+        <in-parameters>
+            <parameter name="file" type="org.apache.commons.fileupload.FileItem" required="true" label="فایل"/>
+            <parameter name="filename" type="String" label="نام فایل"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="url"/>
+            <parameter name="fileId"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="file_v2"      type="script" location="component://core/service/general/file.groovy"     method="get_file_v2">
+        <in-parameters>
+            <parameter name="fileId" required="true" label="شناسه فایل"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="url"/>
+            <parameter name="location"/>
+        </out-parameters>
+    </service>
+
+    <service verb="create"   noun="physicalFile">
+        <in-parameters>
+            <parameter name="file"  type="org.apache.commons.fileupload.FileItem"/>
+            <parameter name="name"/>
+            <parameter name="type"/>
+            <parameter name="filename"/>
+            <parameter name="extension"/>
+            <parameter name="fileEntityName" default="'general.File'"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="fileId"/>
+            <parameter name="url"/>
+        </out-parameters>
+        <actions>
+            <set field="name" from="java.util.UUID.randomUUID().toString()"/>
+            <if condition="org.moqui.util.SystemBinding.getPropOrEnv('webapp_https_enabled').toString().equals('true')">
+                <then>
+                    <set field="scheme" value="https://"/>
+                </then>
+                <else>
+                    <set field="scheme" value="http://"/>
+                </else>
+            </if>
+            <set field="webapp_http_host" from="org.moqui.util.SystemBinding.getPropOrEnv('webapp_http_host')"/>
+            <set field="webapp_http_port" from="org.moqui.util.SystemBinding.getPropOrEnv('webapp_http_port')"/>
+            <script>
+                import java.util.Calendar
+                logger.warn(file.getName().toString())
+                if(!filename)filename=file.getName()
+            </script>
+            <if condition="file &amp;&amp; file.size &gt; 0">
+                <then>
+                    <set field="dateDir"
+                         from="Calendar.getInstance().get(Calendar.YEAR).toString() +'_'+ Calendar.getInstance().get(Calendar.MONTH).toString()"/>
+                    <set field="fileExtension" from="filename.split('\\.')[filename.split('\\.').size()-1]"/>
+                    <if condition="extension">
+                        <set field="fileExtension" from="extension"/>
+                        <script>
+                            filename=name+"."+fileExtension
+                        </script>
+                    </if>
+                    <set field="persistName" from="java.util.UUID.randomUUID().toString()"/>
+                    <set field="persistNameWithExtension" from="persistName+'.'+fileExtension"/>
+                    <service-call name="create#${fileEntityName}" in-map="context+[ originalName:filename, size:file.size, name:name,storage:'url',fromDate:ec.user.nowTimestamp]" out-map="context"/>
+
+                    <set field="moquiRuntimePath" from="org.moqui.util.SystemBinding.getPropOrEnv('moqui.runtime')"/>
+                    <set field="contentRoot" from="org.moqui.util.SystemBinding.getPropOrEnv('trnFileRootLocation')"/>
+                    <set field="contentLocation"
+                         value="file://${moquiRuntimePath}/${contentRoot}/live/${fileEntityName}/${dateDir}/${persistName}/${filename}"/>
+                    <set field="ref" from="ec.resource.getLocationReference(contentLocation)"/>
+                    <script><![CDATA[
+                            fileStream = file.getInputStream()
+                        try {
+                        ref.putStream(fileStream)
+                        }
+                        finally { fileStream.close() }
+                        ]]>
+                    </script>
+                    <set field="url"
+                         from="'http://'+webapp_http_host+'/rest/s1/general/download?fileId='+fileId"/>
+                    <service-call name="update#${fileEntityName}"
+                                  in-map="[fileId:fileId,url:url ,location:contentLocation,relativeLocation:'/live/'+fileEntityName+'/'+dateDir+'/'+persistName+'/'+filename]"/>
+                </then>
+                <else>
+                    <return error="true"
+                            message="the file is too large (check the trnFileSize attr in your config files) the max size is ${trnFileMaxSize}"/>
+                </else>
+            </if>
+        </actions>
+    </service>
+</services>

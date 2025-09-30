@@ -1,0 +1,36 @@
+<services>
+
+        <service verb="get"  noun="createPage"      type="script"  location="component://core/service/hr/hr.groovy"    method="get_createPage">
+            <implements service="base.BaseService"/>
+            <out-parameters>
+                <parameter name="orgs"/>
+                <parameter name="units"/>
+                <parameter name="empType"/>
+                <parameter name="roles"/>
+                <parameter name="isAdmin"/>
+                <parameter name="org"/>
+                <parameter name="firstYearDate"/>
+                <parameter name="devices"/>
+            </out-parameters>
+        </service>
+        <service verb="get"  noun="createPage_v2"   type="script"  location="component://core/service/hr/hr.groovy"    method="get_createPage_v2">
+            <implements service="base.BaseService"/>
+            <out-parameters>
+                <parameter name="orgs"/>
+                <parameter name="units"/>
+                <parameter name="empType"/>
+                <parameter name="roles"/>
+                <parameter name="isAdmin"/>
+                <parameter name="org"/>
+                <parameter name="devices"/>
+            </out-parameters>
+        </service>
+        <service verb="get"  noun="reportConfig"    type="script"  location="component://core/service/hr/hr.groovy"    method="get_reportConfig">
+            <implements service="base.BaseService"/>
+            <out-parameters>
+                <parameter name="config"/>
+                <parameter name="orgId"/>
+            </out-parameters>
+        </service>
+
+</services>

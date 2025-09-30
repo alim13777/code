@@ -1,0 +1,125 @@
+<services>
+
+    <service verb="start"      noun="process"     type="script" location="component://core/service/process/process.groovy" method="start_process">
+            <in-parameters>
+                <parameter name="fileType"/>
+                <parameter name="type"/>
+                <parameter name="processDefinitionKey"/>
+                <parameter name="variables"/>
+                <parameter name="file" type="org.apache.commons.fileupload.FileItem"/>
+            </in-parameters>
+        <out-parameters>
+            <parameter name="description"/>
+            <parameter name="requestId"/>
+            <parameter name="state"/>
+            <parameter name="instanceId"/>
+            <parameter name="businessKey"/>
+        </out-parameters>
+    </service>
+    <service verb="get"        noun="process"     type="script" location="component://core/service/process/process.groovy" method="get_process">
+        <in-parameters>
+            <parameter name="definitionKey"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="process"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="create"     noun="businessKey" type="script" location="component://core/service/process/process.groovy" method="create_businessKey">
+        <in-parameters>
+            <parameter name="processDefinitionKey"/>
+            <parameter name="processDefinitionId" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="businessKey"/>
+        </out-parameters>
+    </service>
+    <service verb="generate"   noun="code"        type="script" location="component://core/service/process/process.groovy" method="generate_code">
+        <in-parameters>
+            <parameter name="id"  type="Long"/>
+            <parameter name="operation"  type="String"/>
+            <parameter name="length" type="Integer" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="code" type="String"/>
+        </out-parameters>
+    </service>
+    <service verb="trigger"    noun="message"     type="script" location="component://core/service/process/process.groovy" method="trigger_message">
+        <in-parameters>
+            <parameter name="variables" type="Object"/>
+            <parameter name="requestId"/>
+            <parameter name="file" type="org.apache.commons.fileupload.FileItem"/>
+            <parameter name="fileType"/>
+            <parameter name="messageName"/>
+            <parameter name="instanceId"/>
+            <parameter name="businessKey"/>
+            <parameter name="multipart"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="list"       noun="process"     type="script" location="component://core/service/process/process.groovy" method="list_process">
+        <in-parameters>
+            <parameter name="businessKey" type="String"/>
+            <parameter name="processInstanceId" type="List"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="process"/>
+            <parameter name="description"/>
+            <parameter name="state"/>
+        </out-parameters>
+    </service>
+    <service verb="get"        noun="request">
+        <in-parameters>
+            <parameter name="partyId"/>
+            <parameter name="state" default-value=""/>
+            <parameter name="requestType"/>
+            <parameter name="businessKey"/>
+            <parameter name="requestDateFrom" default-value=""/>
+            <parameter name="requestDateTo" default-value=""/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="personRequest"/>
+            <parameter name="state"/>
+        </out-parameters>
+        <actions>
+            <set field="personRequest" from="[]"/>
+            <script>
+                try{
+                if(!partyId)partyId=ec.user.userAccount.partyId
+                if(requestDateTo)requestDateTo=requestDateTo+" 23:59:00"
+                if(requestDateFrom)requestDateFrom=requestDateFrom+" 00:00 :00"
+            </script>
+            <entity-find entity-name="PersonRequest" list="request">
+                <econdition field-name="startDate" operator="less-equals"    from="requestDateTo" ignore-if-empty="true"/>
+                <econdition field-name="startDate" operator="greater-equals" from="requestDateFrom" ignore-if-empty="true"/>
+                <econdition field-name="state"  from="state"       ignore-if-empty="true"/>
+                <econdition field-name="type"      from="requestType" ignore-if-empty="true"/>
+                <econdition field-name="businessKey"      from="businessKey" ignore-if-empty="true"/>
+                <econdition field-name="registerParty" from="partyId"/>
+            </entity-find>
+            <script>
+                businessKeyList=request.businessKey;
+                request.each{ele->
+                entry=[:]
+                task=[]
+                entry.startDate=ele.startDate;
+                entry.businessKey=ele.businessKey
+                entry.requestType=ele?.reqType?.description
+                registerPerson=ele?.reqParty.person
+                entry.registerPerson=registerPerson?.firstName+" "+registerPerson?.lastName
+                entry.state=ele?.reqState?.description
+                personRequest.add(entry)
+                }
+                state=1
+                }
+                catch(Exception e){
+                state=0
+                }
+            </script>
+        </actions>
+    </service>
+
+</services>

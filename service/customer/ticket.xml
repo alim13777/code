@@ -1,0 +1,75 @@
+<services>
+
+    <service verb="create"   noun="ticket"     type="script" location="component://core/service/customer/ticket.groovy" method="create_ticket">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="fileId" label="فایل"/>
+            <parameter name="title" required="true" label="عنوان"/>
+            <parameter name="importance" required="true" label="اهمیت"/>
+            <parameter name="section" required="true" label="بخش"/>
+            <parameter name="description" required="true" label="توضیحات"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="ticketId"/>
+        </out-parameters>
+    </service>
+    <service verb="edit"     noun="ticket"     type="script" location="component://core/service/customer/ticket.groovy" method="update_ticket">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="ticketId" required="true" label="شناسه تیکت"/>
+            <parameter name="fileId" label="فایل"/>
+            <parameter name="title" required="true" label="عنوان"/>
+            <parameter name="importance" required="true" label="اهمیت"/>
+            <parameter name="section" required="true" label="بخش"/>
+            <parameter name="description" required="true" label="توضیحات"/>
+            <parameter name="status" required="true" label="وضعیت"/>
+        </in-parameters>
+
+    </service>
+    <service verb="delete"   noun="ticket"     type="script" location="component://core/service/customer/ticket.groovy" method="delete_ticket">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="ticketId"/>
+        </in-parameters>
+    </service>
+    <service verb="search"   noun="tickets"    type="script" location="component://core/service/customer/ticket.groovy" method="search_tickets">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="status"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="tickets"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="orgTickets" type="script" location="component://core/service/customer/ticket.groovy" method="get_org_tickets">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="status"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="tickets"/>
+            <parameter name="importance"/>
+            <parameter name="section"/>
+            <parameter name="statusList"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="ticketAns"  type="script" location="component://core/service/customer/ticket.groovy" method="get_answers">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="ticketId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="ansList"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="ticketAns"  type="script" location="component://core/service/customer/ticket.groovy" method="create_answer">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="text" required="true" label="متن"/>
+            <parameter name="ticketId" required="true" label="شناسه تیکت"/>
+            <parameter name="type" required="true" label="نوع"/>
+        </in-parameters>
+    </service>
+
+</services>

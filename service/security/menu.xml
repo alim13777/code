@@ -1,0 +1,27 @@
+<services>
+    <service verb="search"   noun="menuUserGroup" type="script" location="component://core/service/security/security.groovy" method="search_menu_user_group">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="menuId"/>
+            <parameter name="userGroupId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="menuUserGroup"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"   noun="menuUserGroup" type="script" location="component://core/service/security/security.groovy" method="delete_menu_user_group">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="menuGroupId"/>
+        </in-parameters>
+    </service>
+    <service verb="create"   noun="menuUserGroup" type="script" location="component://core/service/security/security.groovy" method="create_menu_user_group">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <auto-parameters entity-name="MenuUserGroup"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="menuGroupId"/>
+        </out-parameters>
+    </service>
+</services>

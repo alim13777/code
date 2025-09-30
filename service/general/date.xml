@@ -1,0 +1,33 @@
+<services>
+
+    <service verb="convert" noun="date"       type="script" location="component://core/service/general/general.groovy" method="convert_date">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="date"/>
+            <parameter name="fullYear"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="jalali" type="Map"/>
+        </out-parameters>
+    </service>
+    <service verb="convert" noun="dateList"   type="script" location="component://core/service/general/general.groovy" method="convert_date_list">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="list"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="dateList"/>
+        </out-parameters>
+    </service>
+    <service verb="change"  noun="dateFormat" type="script" location="component://core/service/general/general.groovy" method="change_date_format">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="inputDate"/> <!-- eg: 1398/02/07 -->
+            <parameter name="inputTime"/> <!-- eg: 21:02 -->
+        </in-parameters>
+        <out-parameters>
+            <parameter name="dateObject" type="String"/>
+        </out-parameters>
+    </service>
+
+</services>

@@ -1,0 +1,89 @@
+<services>
+
+    <service verb="get" noun="vacation"            type="script" location="component://core/service/entering/request.groovy"  method="get_vacation_page">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="vacation"/>
+        </out-parameters>
+    </service>
+    <service verb="get" noun="mission"             type="script" location="component://core/service/entering/request.groovy"  method="get_mission_page">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="location"/>
+        </out-parameters>
+    </service>
+    <service verb="get" noun="request"             type="script" location="component://core/service/entering/request.groovy"  method="get_request_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="serviceList"/>
+            <parameter name="statusList"/>
+            <parameter name="userEmployeeId"/>
+        </out-parameters>
+
+    </service>
+    <service verb="get" noun="requestLimit"        type="script" location="component://core/service/entering/request.groovy"  method="get_limit_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="limitType"/>
+        </out-parameters>
+    </service>
+    <service verb="get" noun="notification"        type="script" location="component://core/service/entering/request.groovy"  method="get_notification_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="organization"/>
+        </out-parameters>
+    </service>
+    <service verb="get" noun="requestLimitPage"    type="script" location="component://core/service/entering/request.groovy"  method="get_request_limit_page">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="orgId"/>
+            <parameter name="users"/>
+            <parameter name="confirm"/>
+            <parameter name="role"/>
+            <parameter name="units"/>
+            <parameter name="org"/>
+            <parameter name="config"/>
+            <parameter name="requestLimit" type="List"/>
+        </out-parameters>
+    </service>
+    <service verb="get" noun="location"            type="script" location="component://core/service/entering/location.groovy" method="get_location_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="isAdmin"/>
+            <parameter name="organization"/>
+            <parameter name="organizations"/>
+            <parameter name="locations"/>
+            <parameter name="users"/>
+        </out-parameters>
+    </service>
+    <service verb="get" noun="enteringLocation"    type="script" location="component://core/service/entering/location.groovy" method="get_entering_location_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="isAdmin"/>
+            <parameter name="org"/>
+            <parameter name="organizations"/>
+        </out-parameters>
+    </service>
+    <service verb="get" noun="enteringLocation_v2" type="script" location="component://core/service/entering/location.groovy" method="get_entering_location_page_v2">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="users"/>
+        </out-parameters>
+    </service>
+    <service verb="get" noun="userLocation"        type="script" location="component://core/service/entering/location.groovy" method="get_user_location_page">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="locations"/>
+            <parameter name="units"/>
+        </out-parameters>
+    </service>
+
+</services>

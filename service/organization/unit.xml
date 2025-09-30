@@ -1,0 +1,111 @@
+<services>
+
+
+    <service verb="search"   noun="unit"     type="script" location="component://core/service/organization/unit.groovy" method="search_unit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name" default="''"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="isAdmin"/>
+            <parameter name="units"/>
+            <parameter name="employees"/>
+            <parameter name="emps"/>
+        </out-parameters>
+    </service>
+    <service verb="search"   noun="unit_v2"  type="script" location="component://core/service/organization/unit.groovy" method="search_unit_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="units"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="unit"     type="script" location="component://core/service/organization/unit.groovy" method="create_unit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+            <parameter name="name"/>
+            <parameter name="category"/>
+            <parameter name="description"/>
+            <parameter name="holidayConf"/>
+            <parameter name="shiftType"/>
+            <parameter name="isDefault"/>
+            <parameter name="modir" type="Map"/>
+            <parameter name="employee" type="List"/>
+            <parameter name="sql" type="groovy.sql.Sql"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="unitId"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="unit_v2"  type="script" location="component://core/service/organization/unit.groovy" method="create_unit_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name" required="true" label="نام"/>
+            <parameter name="category"  label="دسته بندی" />
+            <parameter name="description" label="توضیحات"/>
+            <parameter name="modir" type="Map" label="مدیر"/>
+            <parameter name="employee" type="List" label="لیست کارمندان"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="unitId"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"   noun="unit"     type="script" location="component://core/service/organization/unit.groovy" method="delete_unit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="unitId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="unitId"/>
+        </out-parameters>
+    </service>
+    <service verb="edit"     noun="unit"     type="script" location="component://core/service/organization/unit.groovy" method="update_unit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name" required="true"/>
+            <parameter name="unitId" required="true"/>
+            <parameter name="description"/>
+            <parameter name="category"/>
+            <parameter name="modirEmployeeId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="unitId"/>
+        </out-parameters>
+    </service>
+    <service verb="edit"     noun="unit_v2"  type="script" location="component://core/service/organization/unit.groovy" method="update_unit_v2">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="name" required="true" label="نام واحد"/>
+            <parameter name="unitId" required="true" label="شناسه واحد"/>
+            <parameter name="description"/>
+            <parameter name="category" label="دسته بندی"/>
+            <parameter name="modir" type="Map"/>
+            <parameter name="employee" type="List" label="لیست کارمندان"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="manager"  type="script" location="component://core/service/organization/unit.groovy" method="get_manager">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="unitId"/>
+            <parameter name="role"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="manager"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="employee" type="script" location="component://core/service/organization/unit.groovy" method="get_employee">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="unitId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="employee"/>
+        </out-parameters>
+
+    </service>
+
+
+</services>

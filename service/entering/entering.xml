@@ -1,0 +1,565 @@
+<services>
+
+    <service verb="get"      noun="attendance"      type="script" location="component://core/service/entering/entering.groovy" method="get_attendance">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="mobile" label="شناسه کاربر" required="true"/>
+            <parameter name="startDate" label="تاریخ شروع" required="true"/>
+            <parameter name="endDate" label="تاریخ پایان" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="report"/>
+            <parameter name="karkard"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="userAttendance"  type="script" location="component://core/service/entering/entering.groovy" method="get_user_attendance">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="startDate" label="تاریخ شروع" required="true"/>
+            <parameter name="endDate" label="تاریخ پایان" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="report"/>
+            <parameter name="karkard"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="dailyAttendance" type="script" location="component://core/service/entering/entering.groovy" method="get_daily_attendance">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="date"/>
+            <parameter name="users" type="List"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="karkard"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="karkard"         type="script" location="component://core/service/entering/entering.groovy" method="get_karkard">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="startDate" label="تاریخ شروع" required="true"/>
+            <parameter name="endDate" label="تاریخ پایان" required="true"/>
+            <parameter name="users" type="List" label="لیست کاربران" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="karkard"/>
+        </out-parameters>
+    </service>
+    <service verb="search"   noun="entering"        type="script" location="component://core/service/entering/entering.groovy" method="searchEntering">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="username" required="true" type="String" label="تاریخ شروع"/>
+            <parameter name="fromDate" required="true" type="String" label="تاریخ شروع"/>
+            <parameter name="toDate" required="true" type="String" label="تاریخ پایان"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="enteringList"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="confirm"         type="script" location="component://core/service/entering/entering.groovy" method="create_confirm">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <auto-parameters entity-name="Confirm"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="confirmId"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"   noun="confirm"         type="script" location="component://core/service/entering/entering.groovy" method="delete_confirm">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="confirmId"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="confirm"         type="script" location="component://core/service/entering/entering.groovy" method="get_confirm">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="process"/>
+            <parameter name="username"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="hasConfirm"/>
+            <parameter name="role"/>
+            <parameter name="orgId"/>
+            <parameter name="unitId"/>
+        </out-parameters>
+    </service>
+    <service verb="search"   noun="confirm"         type="script" location="component://core/service/entering/entering.groovy" method="search_confirm">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="confirm"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="requestLimit"    type="script" location="component://core/service/entering/entering.groovy" method="create_request_limit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+            <parameter name="value"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+    </service>
+    <service verb="update"   noun="requestLimit"    type="script" location="component://core/service/entering/entering.groovy" method="create_request_limit">
+        <implements service="base.BaseService"/>
+
+        <in-parameters>
+            <parameter name="requestLimitId"/>
+            <parameter name="type"/>
+            <parameter name="value"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+    </service>
+    <service verb="delete"   noun="requestLimit"    type="script" location="component://core/service/entering/entering.groovy" method="delete_request_limit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="requestLimit"    type="script" location="component://core/service/entering/entering.groovy" method="get_request_limit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="requestLimit"/>
+        </out-parameters>
+
+    </service>
+    <service verb="create"   noun="request"         type="script" location="component://core/service/entering/entering.groovy" method="create_request">
+        <in-parameters>
+            <auto-parameters entity-name="Request"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="description"/>
+            <parameter name="requestId"/>
+        </out-parameters>
+    </service>
+    <service verb="update"   noun="request"         type="script" location="component://core/service/entering/entering.groovy" method="update_request">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="requestId"/>
+            <parameter name="assignee"/>
+            <parameter name="status"/>
+            <parameter name="endDate"/>
+            <parameter name="description"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="requestId"/>
+        </out-parameters>
+    </service>
+    <service verb="get"      noun="reportConfig"    type="script" location="component://core/service/entering/entering.groovy" method="get_report_config">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="type"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="config"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="enteringLimit"   type="script" location="component://core/service/entering/entering.groovy" method="create_entering_limit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="year" />
+            <parameter name="month" />
+            <parameter name="startDate" />
+            <parameter name="endDate" />
+            <parameter name="orgId" />
+            <parameter name="expireDate" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="limitId"/>
+        </out-parameters>
+
+
+    </service>
+    <service verb="edit"     noun="enteringLimit"   type="script" location="component://core/service/entering/entering.groovy" method="update_entering_limit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="limitId" />
+            <parameter name="orgId"/>
+            <parameter name="year" />
+            <parameter name="month" />
+            <parameter name="startDate" />
+            <parameter name="endDate" />
+            <parameter name="expireDate" />
+        </in-parameters>
+    </service >
+    <service verb="get"      noun="enteringLimit"   type="script" location="component://core/service/entering/entering.groovy" method="get_entering_limit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="orgId"/>
+            <parameter name="year" />
+        </in-parameters>
+        <out-parameters>
+            <parameter name="entering" type="List"/>
+        </out-parameters>
+    </service>
+    <service verb="delete"   noun="enteringLimit"   type="script" location="component://core/service/entering/entering.groovy" method="delete_entering_limit">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="limitId" />
+        </in-parameters>
+    </service>
+    <service verb="get"      noun="enteringAccess"  type="script" location="component://core/service/entering/entering.groovy" method="get_entering_access">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="username"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="access"/>
+        </out-parameters>
+    </service>
+    <service verb="create"   noun="enteringAccess"  type="script" location="component://core/service/entering/entering.groovy" method="create_entering_access">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="users" type="List"/>
+            <parameter name="orgId"/>
+        </in-parameters>
+    </service>
+    <service verb="delete"   noun="enteringAccess"  type="script" location="component://core/service/entering/entering.groovy" method="delete_entering_access">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="userCode"/>
+        </in-parameters>
+    </service>
+
+    <service verb="search"   noun="request">
+        <in-parameters>
+            <auto-parameter entity-name="entering.RequestDetail"/>
+            <parameter name="fromDate"/>
+            <parameter name="type"/>
+            <parameter name="clientId"/>
+            <parameter name="state"/>
+            <parameter name="toDate"/>
+            <parameter name="username"/>
+            <parameter name="requestId"/>
+            <parameter name="hourlyRequestId"/>
+            <parameter name="fromRequestDate"/>
+            <parameter name="toRequestDate"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="request"/>
+            <parameter name="status"/>
+        </out-parameters>
+        <actions>
+            <set field="request" from="[]"/>
+            <set field="status" value="0"/>
+            <script>
+                import java.time.*
+                if(username &amp;&amp; !employeeId){
+                user=ec.entity.find("moqui.security.UserAccount").condition([username:username]).one()
+                employeeId=user?.employeeId
+                }
+
+                if(fromDate?.contains("-"))fromDate=fromDate.replaceAll("-","/")+" 00:00"
+                if(toDate?.contains("-"))toDate=toDate.replaceAll("-","/")+" 23:59"
+                if(fromRequestDate?.contains("-"))fromRequestDate=fromRequestDate.replaceAll("-","/")+ " 00:00"
+                if(toRequestDate?.contains("-"))toRequestDate=toRequestDate.replaceAll("-","/")+ " 00:00"
+                if(fromDate)fromDate=new Date(fromDate)
+                if(toDate)toDate=new Date(toDate)
+                if(fromRequestDate)fromRequestDate=new Date(fromRequestDate)
+                if(toRequestDate)toRequestDate=new Date(toRequestDate)
+                if(type)type=type.split(",").toList()
+                if(state)state=state.split(",").toList()
+                if(hourlyRequestId)hourlyRequestId=hourlyRequestId.split(",").toList()
+            </script>
+            <entity-find entity-name="RequestDetail" list="requestList">
+                <econdition field-name="requestId" from="requestId" ignore-if-empty="true"/>
+                <econdition field-name="type" from="type" ignore-if-empty="true"/>
+                <econdition field-name="state" from="state" ignore-if-empty="true"/>
+                <econdition field-name="businessKey" from="businessKey" ignore-if-empty="true"/>
+                <econdition field-name="employeeId" from="employeeId" />
+                <econdition field-name="hourlyHourlyRequestId" from="hourlyRequestId" ignore-if-empty="true"/>
+                <econdition field-name="clientId" from="clientId" ignore-if-empty="true"/>
+                <econdition field-name="state"   operator="not-equals" value="enseraf" ignore-if-empty="true"/>
+                <econdition field-name="startDate" operator="less-equals" from="toDate" ignore-if-empty="true"/>
+                <econdition field-name="startDate" operator="greater-equals" from="fromDate" ignore-if-empty="true"/>
+                <order-by field-name="-startDate"/>
+            </entity-find>
+            <script><![CDATA[
+            def validateRequest(requestDate){
+                shouldAdd=false;
+                if(!requestDate)return false;
+                requestDate=requestDate.split(",").collect{date->new Date(date.replaceAll("-","/")+" 00:00")}
+                if(fromRequestDate && !toRequestDate &&  requestDate.findAll{item->item>=fromRequestDate}.size()>0)shouldAdd=true
+                if(toRequestDate    && !fromRequestDate && requestDate.findAll{item->item<=toRequestDate}.size()>0)shouldAdd=true
+                if(toRequestDate    && fromRequestDate   && requestDate.findAll{item->item<=toRequestDate && item>=fromRequestDate}.size()>0)shouldAdd=true
+                if(!toRequestDate && !fromRequestDate)shouldAdd=true
+                return shouldAdd;
+                }
+            try{
+                requestList.each{ele->
+                entry=[:]
+                entry.requestId=ele.requestId
+                entry.type=ele.type
+                entry.businessKey=ele.businessKey
+                entry.startDate=ele.startDate.format("yyyy-MM-dd");
+                entry.endDate=ele?.endDate?.format("yyyy-MM-dd");
+                entry.reason=ele?.description
+                entry.state=ele?.state;
+                switch(ele.type){
+                case "dailyVacation":
+                    shouldAdd=validateRequest(ele.vacationDate)
+                    entry.date=ele?.vacationDate;
+                    entry.vacationType=ele?.vacationType
+                    entry.url=ele?.vacationFile
+                    entry.description=ele?.vacationDescription
+                    break;
+                case "dailyMission":
+                    shouldAdd=validateRequest(ele.missionDate)
+                    entry.date=ele?.missionDate;
+                    entry.start=ele?.missionStartTime;
+                    entry.end=ele?.missionEndTime;
+                    entry.location=ele?.missionLocation
+                    entry.description=ele?.missionDescription
+                    break;
+                case "EnteringCorrection":
+                    shouldAdd=validateRequest(ele.enteringDate)
+                    entry.start=ele?.enteringStartTime;
+                    entry.end=ele?.enteringEndTime;
+                    entry.date=ele?.enteringDate
+                    entry.description=ele?.enteringDescription
+                    break;
+                case "hourlyVacation":
+                case "hourlyMission":
+                    shouldAdd=validateRequest(ele.hourlyDate)
+                    entry.hourlyRequestId=ele?.hourlyHourlyRequestId;
+                    entry.start=ele?.hourlyStartTime;
+                    entry.end=ele?.hourlyEndTime
+                    entry.description=ele?.hourlyDescription
+                    entry.date=ele?.hourlyDate
+                    entry.location=ele?.hourlyLocation
+                    break;
+                default:
+                    break;
+                }
+                if(shouldAdd)request.add(entry)
+                }
+                status=1
+                }
+                catch(Exception e){
+                request=[]
+                e.printStackTrace()
+                status=0
+                }
+            ]]></script>
+        </actions>
+    </service>
+    <service verb="get"      noun="request">
+        <in-parameters>
+            <parameter name="fromDate"/>
+            <parameter name="type"/>
+            <parameter name="clientId"/>
+            <parameter name="state"/>
+            <parameter name="toDate"/>
+            <parameter name="username"/>
+            <parameter name="requestId"/>
+            <parameter name="hourlyRequestId"/>
+            <parameter name="fromRequestDate"/>
+            <parameter name="toRequestDate"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="request"/>
+            <parameter name="status"/>
+        </out-parameters>
+        <actions>
+            <set field="request" from="[]"/>
+            <set field="status" value="0"/>
+            <script>
+                import java.time.*
+
+                if(username &amp;&amp; !employeeId){
+                user=ec.entity.find("moqui.security.UserAccount").condition([username:username]).one()
+                employeeId=user?.employeeId
+                }
+                if(fromDate?.contains("-"))fromDate=fromDate.replaceAll("-","/")+" 00:00"
+                if(toDate?.contains("-"))toDate=toDate.replaceAll("-","/")+" 23:59"
+                if(fromRequestDate?.contains("-"))fromRequestDate=fromRequestDate.replaceAll("-","/")+ " 00:00"
+                if(toRequestDate?.contains("-"))toRequestDate=toRequestDate.replaceAll("-","/")+ " 00:00"
+                if(fromDate)fromDate=new Date(fromDate)
+                if(toDate)toDate=new Date(toDate)
+                if(fromRequestDate)fromRequestDate=new Date(fromRequestDate)
+                if(toRequestDate)toRequestDate=new Date(toRequestDate)
+                if(type)type=type.split(",").toList()
+                if(state)state=state.split(",").toList()
+                if(hourlyRequestId)hourlyRequestId=hourlyRequestId.split(",").toList()
+            </script>
+            <entity-find entity-name="RequestDetail" list="requestList">
+                <econdition field-name="requestId" from="requestId" ignore-if-empty="true"/>
+                <econdition field-name="employeeId" from="employeeId"/>
+                <econdition field-name="type" from="type" ignore-if-empty="true"/>
+                <econdition field-name="status" from="state" ignore-if-empty="true"/>
+                <econdition field-name="businessKey" from="businessKey" ignore-if-empty="true"/>
+                <econdition field-name="hourlyHourlyRequestId" from="hourlyRequestId" ignore-if-empty="true"/>
+                <econdition field-name="status"   operator="not-equals" value="enseraf" ignore-if-empty="true"/>
+                <econdition field-name="startDate" operator="less-equals" from="toDate" ignore-if-empty="true"/>
+                <econdition field-name="startDate" operator="greater-equals" from="fromDate" ignore-if-empty="true"/>
+                <order-by field-name="-startDate"/>
+            </entity-find>
+            <script><![CDATA[
+            def validateRequest(requestDate){
+                shouldAdd=false;
+                if(!requestDate)return false;
+                requestDate=requestDate.split(",").collect{date->new Date(date.replaceAll("-","/")+" 00:00")}
+                if(fromRequestDate && !toRequestDate &&  requestDate.findAll{item->item>=fromRequestDate}.size()>0)shouldAdd=true
+                if(toRequestDate    && !fromRequestDate && requestDate.findAll{item->item<=toRequestDate}.size()>0)shouldAdd=true
+                if(toRequestDate    && fromRequestDate   && requestDate.findAll{item->item<=toRequestDate && item>=fromRequestDate}.size()>0)shouldAdd=true
+                if(!toRequestDate && !fromRequestDate)shouldAdd=true
+                return shouldAdd;
+                }
+            try{
+                requestList.each{ele->
+                entry=[:]
+                entry.requestId=ele.requestId
+                entry.type=ele.type
+                entry.businessKey=ele.businessKey
+                entry.startDate=ele.startDate.format("yyyy-MM-dd");
+                entry.endDate=ele?.endDate?.format("yyyy-MM-dd");
+                entry.reason=ele?.description
+                entry.state=ele?.status;
+                switch(ele.type){
+                case "dailyVacation":
+                    shouldAdd=validateRequest(ele.vacationDate)
+                    entry.date=ele?.vacationDate;
+                    entry.vacationType=ele?.vacationType
+                    entry.url=ele?.vacationFile
+                    entry.description=ele?.vacationDescription
+                    break;
+                case "dailyMission":
+                    shouldAdd=validateRequest(ele.missionDate)
+                    entry.date=ele?.missionDate;
+                    entry.start=ele?.missionStartTime;
+                    entry.end=ele?.missionEndTime;
+                    entry.location=ele?.missionLocation
+                    entry.description=ele?.missionDescription
+                    break;
+                case "EnteringCorrection":
+                    shouldAdd=validateRequest(ele.enteringDate)
+                    entry.start=ele?.enteringStartTime;
+                    entry.end=ele?.enteringEndTime;
+                    entry.date=ele?.enteringDate
+                    entry.description=ele?.enteringDescription
+                    break;
+                case "hourlyVacation":
+                case "hourlyMission":
+                    shouldAdd=validateRequest(ele.hourlyDate)
+                    entry.hourlyRequestId=ele?.hourlyHourlyRequestId;
+                    entry.start=ele?.hourlyStartTime;
+                    entry.end=ele?.hourlyEndTime
+                    entry.description=ele?.hourlyDescription
+                    entry.date=ele?.hourlyDate
+                    entry.location=ele?.hourlyLocation
+                    break;
+                case "vehiclePublic":
+                case "vehiclePrivate":
+                    def dateVehicle;
+                    if(ele?.vehicleStartTime!=null){
+                    if(ele.vehicleStartTime.indexOf("T")!=-1)dateVehicle=ele.vehicleStartTime.split("T")[0]
+                    if(ele.vehicleStartTime.indexOf(" ")!=-1)dateVehicle=ele.vehicleStartTime.split(" ")[0]
+                    }
+                    if(dateVehicle)shouldAdd=validateRequest(dateVehicle)
+                    entry.start=ele?.vehicleStartTime
+                    entry.end=ele?.vehicleEndTime
+                    entry.driver=ele?.vehicleDriverType
+                    entry.vehicleType=ele?.vehicleType
+                    entry.location=ele?.vehicleLocation
+                    entry.companion=ele?.vehicleCompanion
+                    entry.urbanTrip=ele?.vehicleUrbanTrip
+                    entry.deliveryType=ele?.vehicleDeliveryType
+                    entry.driverType=ele?.vehicleDriverType
+                    entry.geoPoint=ele?.vehicleGeoPoint
+                    entry.description=ele?.vehicleDescription
+                break;
+                default:
+                    break;
+                }
+                if(shouldAdd)request.add(entry)
+                }
+                status=1
+                }
+                catch(Exception e){
+                request=[]
+                e.printStackTrace()
+                status=0
+                }
+            ]]></script>
+        </actions>
+    </service>
+    <service verb="search"   noun="employeeRequest">
+        <in-parameters>
+            <parameter name="fromDate"/>
+            <parameter name="type"/>
+            <parameter name="status"/>
+            <parameter name="toDate"/>
+            <parameter name="username"/>
+            <parameter name="requestId"/>
+            <parameter name="hourlyRequestId"/>
+            <parameter name="fromRequestDate"/>
+            <parameter name="businessKey"/>
+            <parameter name="toRequestDate"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="request"/>
+            <parameter name="state"/>
+        </out-parameters>
+        <actions>
+            <script>
+                import java.time.*
+                try{
+                request=[]
+                ec.service.sync()
+                if(fromDate?.contains("-"))fromDate=fromDate.replaceAll("-","/")+" 00:00"
+                else if(fromDate)fromDate=fromDate+" 00:00"
+                if(toDate?.contains("-"))toDate=toDate.replaceAll("-","/")+" 23:59"
+                else if(toDate) toDate=toDate+" 23:59"
+                if(fromRequestDate?.contains("-"))fromRequestDate=fromRequestDate.replaceAll("-","/")+ " 00:00"
+                if(toRequestDate?.contains("-"))toRequestDate=toRequestDate.replaceAll("-","/")+ " 00:00"
+                if(fromDate)fromDate=new Date(fromDate)
+                if(toDate)toDate=new Date(toDate)
+                if(fromRequestDate)fromRequestDate=new Date(fromRequestDate)
+                if(toRequestDate)toRequestDate=new Date(toRequestDate)
+                if(hourlyRequestId)hourlyRequestId=hourlyRequestId.split(",").toList()
+                clientIds=[78,90]
+                isAdmin=ec.entity.find("UserGroupMember").condition([userId:ec.user.userId,userGroupId:"ADMIN"]).one()
+                orgId=null
+                if(!isAdmin){
+                orgId=ec.entity.find("Organization").condition([admin:ec.user.userAccount?.employeeId]).one()?.orgId
+                if(!orgId){
+                request=[]
+                return;
+                }
+                }
+            </script>
+            <entity-find entity-name="EmployeeRequest" list="request">
+                <econdition field-name="requestId" from="requestId" ignore-if-empty="true"/>
+                <econdition field-name="type" from="type" ignore-if-empty="true"/>
+                <econdition field-name="status" from="status" ignore-if-empty="true"/>
+                <econdition field-name="orgId" from="orgId" ignore-if-empty="true"/>
+                <econdition field-name="clientId" operator="in" from="clientIds" ignore-if-empty="true"/>
+                <econdition field-name="businessKey" from="businessKey" ignore-if-empty="true"/>
+                <econdition field-name="hourlyHourlyRequestId" from="hourlyRequestId" ignore-if-empty="true"/>
+                <econdition field-name="startDate" operator="less-equals" from="toDate" ignore-if-empty="true"/>
+                <econdition field-name="startDate" operator="greater-equals" from="fromDate" ignore-if-empty="true"/>
+                <order-by field-name="-startDate"/>
+            </entity-find>
+            <script><![CDATA[
+                request=request.unique{e->e.businessKey}
+                state=1
+                }
+                catch(Exception e){
+                request=[]
+                e.printStackTrace()
+                state=0
+                }
+            ]]></script>
+        </actions>
+    </service>
+
+</services>

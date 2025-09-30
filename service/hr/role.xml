@@ -1,0 +1,48 @@
+<services>
+
+    <service verb="delete"      noun="role" type="script" location="component://core/service/hr/hr.groovy" method="delete_role">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="roleTypeId"/>
+        </in-parameters>
+    </service>
+    <service verb="create"      noun="role" type="script" location="component://core/service/hr/hr.groovy" method="create_role">
+        <in-parameters>
+            <parameter name="title" label="عنوان" required="true"/>
+            <parameter name="description" label="توضیحات" required="true"/>
+        </in-parameters>
+    </service>
+    <service verb="edit"        noun="role" type="script" location="component://core/service/hr/hr.groovy" method="update_role">
+        <in-parameters>
+            <parameter name="title" label="عنوان" required="true"/>
+            <parameter name="description" label="توضیحات" required="true"/>
+        </in-parameters>
+    </service>
+
+    <service verb="search"      noun="role">
+        <in-parameters>
+            <parameter name="name"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="roles"/>
+            <parameter name="state"/>
+        </out-parameters>
+        <actions>
+            <script>
+                name=name?name:""
+                try{
+            </script>
+            <entity-find  entity-name="Role" list="roles">
+                <econdition field-name="title" operator="LIKE" value="%${name}%" ignore-if-empty="true"/>
+            </entity-find>
+            <script>
+                state=1
+                }
+                catch(Exception e){
+                e.printStackTrace()
+                state=0
+                }
+            </script>
+        </actions>
+    </service>
+</services>

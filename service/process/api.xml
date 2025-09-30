@@ -1,0 +1,25 @@
+<services>
+
+    <service verb="execute" noun="post" type="script" location="component://core/service/process/process.groovy" method="execute_post">
+        <in-parameters>
+            <parameter name="postData" type="Map"/>
+            <parameter name="url"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="description"/>
+            <parameter name="state"/>
+            <parameter name="data"/>
+        </out-parameters>
+    </service>
+    <service verb="execute" noun="get" type="script"  location="component://core/service/process/process.groovy" method="execute_get">
+        <in-parameters>
+            <parameter name="url"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="state"/>
+            <parameter name="data"/>
+        </out-parameters>
+
+    </service>
+
+</services>

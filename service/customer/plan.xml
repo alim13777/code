@@ -1,0 +1,60 @@
+<services>
+
+    <service verb="create" noun="plan"     type="script"     location="component://core/service/customer/plan.groovy"     method="create_plan">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="title" label="عنوان" required="true"/>
+            <parameter name="users" label="کاربران"  required="true"/>
+            <parameter name="cost" label="هزینه"  required="true"/>
+            <parameter name="category" label="دسته‌بندی"  required="true"/>
+            <parameter name="days" label="روزها"  required="true"/>
+            <parameter name="description" label="توضیحات"/>
+            <parameter name="discount" label="تخفیف" />
+            <parameter name="hasDiscount" label="دارای تخفیف"  required="true"/>
+            <parameter name="giftUsers" label="کاربران هدیه"  required="true"/>
+            <parameter name="sortNum" label="شماره مرتب‌سازی"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="planId"/>
+        </out-parameters>
+    </service>
+    <service verb="edit"   noun="plan"     type="script"     location="component://core/service/customer/plan.groovy"     method="update_plan">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="planId" label="شناسه طرح" required="true"/>
+            <parameter name="title" label="عنوان" required="true"/>
+            <parameter name="users" label="کاربران"  required="true"/>
+            <parameter name="cost" label="هزینه"  required="true"/>
+            <parameter name="category" label="دسته‌بندی"  required="true"/>
+            <parameter name="days" label="روزها"  required="true"/>
+            <parameter name="description" label="توضیحات"/>
+            <parameter name="discount" label="تخفیف" />
+            <parameter name="hasDiscount" label="دارای تخفیف"  required="true"/>
+            <parameter name="giftUsers" label="کاربران هدیه"  required="true"/>
+            <parameter name="sortNum" label="شماره مرتب‌سازی"/>
+        </in-parameters>
+    </service>
+    <service verb="delete" noun="plan"     type="script"     location="component://core/service/customer/plan.groovy"     method="delete_plan">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="planId" label="شناسه طرح" required="true"/>
+        </in-parameters>
+    </service>
+    <service verb="search" noun="plan"     type="script"     location="component://core/service/customer/plan.groovy"     method="search_plan">
+        <implements service="base.BaseService"/>
+        <in-parameters>
+            <parameter name="title"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="plans"/>
+        </out-parameters>
+    </service>
+    <service verb="search" noun="plan_v2"  type="script"     location="component://core/service/customer/customer.groovy" method="search_plan_v2">
+        <implements service="base.BaseService"/>
+        <out-parameters>
+            <parameter name="plans"/>
+        </out-parameters>
+
+    </service>
+
+</services>
